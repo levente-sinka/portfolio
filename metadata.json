@@ -1,0 +1,6 @@
+{
+  "name": "SL PHOTOGRAPHY — Hospitality & Culinary Photography",
+  "description": "Prémium hospitality, boutique hotel és gasztronómiai fotózás Magyarországon, Ausztriában és Belgiumban. Interaktív időpontfoglaló és közvetlen kapcsolatfelvétel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
