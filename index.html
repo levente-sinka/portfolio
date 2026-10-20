@@ -78,6 +78,25 @@
       .photo-frame:hover svg, .photo-frame:hover img {
         transform: scale(1.03);
       }
+
+      /* Subtle Viewport Fade-In Animation for Landing Page Sections */
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .fade-in-section {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+        }
+      }
     </style>
   </head>
   <body class="bg-white text-[#001744] antialiased">
@@ -167,7 +186,7 @@
 
     <main>
       <!-- HERO EDITORIAL BANNER (Tommy Hilfiger Campaign Editorial Style) -->
-      <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 border-b border-neutral-200 bg-gradient-to-b from-white via-[#f7f8fa] to-[#eef1f6]">
+      <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 border-b border-neutral-200 bg-gradient-to-b from-white via-[#f7f8fa] to-[#eef1f6] fade-in-section">
         <div class="max-w-7xl mx-auto px-6">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -280,7 +299,7 @@
       </section>
 
       <!-- RECENT PROJECTS SECTION (Tommy Hilfiger Clean Collection Showcase) -->
-      <section id="recent-projects" class="py-20 sm:py-28 bg-[#f5f6f9] text-[#001744] border-b border-neutral-200">
+      <section id="recent-projects" class="py-20 sm:py-28 bg-[#f5f6f9] text-[#001744] border-b border-neutral-200 fade-in-section">
         <div class="max-w-7xl mx-auto px-6 space-y-12">
           
           <!-- Heading with Tommy Signature Ribbon Accent -->
@@ -469,7 +488,7 @@
       </section>
 
       <!-- ABOUT ME SECTION (Levente Sinka - Hospitality Visual Production) -->
-      <section id="about" class="py-20 sm:py-28 bg-white border-b border-neutral-200 relative overflow-hidden">
+      <section id="about" class="py-20 sm:py-28 bg-white border-b border-neutral-200 relative overflow-hidden fade-in-section">
         <div class="max-w-7xl mx-auto px-6">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
@@ -597,7 +616,7 @@
       </section>
 
       <!-- HOSPITALITY ARCHIVE (Categorized Showcase in Tommy Retail Grid) -->
-      <section id="portfolio" class="py-20 border-b border-neutral-200 bg-white">
+      <section id="portfolio" class="py-20 border-b border-neutral-200 bg-white fade-in-section">
         <div class="max-w-7xl mx-auto px-6 space-y-12">
           
           <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -725,13 +744,91 @@
               </div>
             </div>
 
+            <!-- Card D: Boutique Hotel Residence (Interior 003) -->
+            <div data-gallery-cat="hotels" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('grand-suite-interior')">
+              <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+                <img
+                  src="/portfolio/public/interior-photo-003.jpg"
+                  alt="Luxury Boutique Residence - Interior"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/interior-photo-003.jpg'; this.onerror=function(){ this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); };"
+                />
+                <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
+                  <div class="font-serif text-xl">Luxury Boutique Residence</div>
+                </div>
+                <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
+                    View Fullscreen
+                  </span>
+                </div>
+              </div>
+              <div class="flex justify-between items-baseline">
+                <h4 class="text-xl font-serif text-[#001744] font-semibold">Luxury Boutique Residence</h4>
+                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Suites &amp; Living (Ghent)</span>
+              </div>
+            </div>
+
+            <!-- Card E: Heritage Architecture (Architecture 001) -->
+            <div data-gallery-cat="hotels" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('heritage-facade')">
+              <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+                <img
+                  src="/portfolio/public/architecture-photo-001.jpg"
+                  alt="Heritage Architecture & Facade"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/architecture-photo-001.jpg'; this.onerror=function(){ this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); };"
+                />
+                <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
+                  <div class="font-serif text-xl">Grand Heritage Architecture</div>
+                </div>
+                <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
+                    View Fullscreen
+                  </span>
+                </div>
+              </div>
+              <div class="flex justify-between items-baseline">
+                <h4 class="text-xl font-serif text-[#001744] font-semibold">Grand Heritage Architecture</h4>
+                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Historic Facades (Vienna)</span>
+              </div>
+            </div>
+
+            <!-- Card F: Culinary Atmosphere (Food 001) -->
+            <div data-gallery-cat="gastronomy" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('artisan-table-setting')">
+              <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+                <img
+                  src="/portfolio/public/food-photo-001.jpg"
+                  alt="Signature Gastronomy Staging"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/food-photo-001.jpg'; this.onerror=function(){ this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); };"
+                />
+                <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
+                  <div class="font-serif text-xl">Signature Gastronomy Atmosphere</div>
+                </div>
+                <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
+                    View Fullscreen
+                  </span>
+                </div>
+              </div>
+              <div class="flex justify-between items-baseline">
+                <h4 class="text-xl font-serif text-[#001744] font-semibold">Signature Gastronomy Staging</h4>
+                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Fine Dining (Budapest)</span>
+              </div>
+            </div>
+
           </div>
 
         </div>
       </section>
 
       <!-- DIRECT CONTACT FORM & CLICK-TO-CALL (Tommy Retail Inquiry Suite) -->
-      <section id="contact" class="py-20 border-b border-neutral-200 bg-white">
+      <section id="contact" class="py-20 border-b border-neutral-200 bg-white fade-in-section">
         <div class="max-w-4xl mx-auto px-6">
           
           <div class="text-center space-y-4 mb-10">
@@ -1100,6 +1197,27 @@
           specs: "20mm Ultra-Wide · f/5.6 · Twilight Blue Hour Exposure",
           desc: "Twilight hospitality capture of a luxury hotel rooftop terrace featuring an illuminated fire pit, evening guests, and city vistas in Budapest.",
           image: "/portfolio/public/interior-photo-002.jpg"
+        },
+        'grand-suite-interior': {
+          title: "Luxury Boutique Residence",
+          category: "Boutique Hotels",
+          specs: "35mm Prime · f/2.0 · Natural Daylight & Soft Ambient Sconces",
+          desc: "Architectural interior staging capturing rich textures, warm ambient light, and spacious luxury hotel styling in Ghent.",
+          image: "/portfolio/public/interior-photo-003.jpg"
+        },
+        'heritage-facade': {
+          title: "Grand Architectural Heritage",
+          category: "Boutique Hotels",
+          specs: "24mm Tilt-Shift · f/5.6 · Golden Hour Elevation",
+          desc: "Dramatic architectural elevation and facade capture emphasizing stately classical design and hospitality prestige in Vienna.",
+          image: "/portfolio/public/architecture-photo-001.jpg"
+        },
+        'artisan-table-setting': {
+          title: "Signature Gastronomy Atmosphere",
+          category: "Gastronomy",
+          specs: "50mm Prime · f/1.8 · Warm Ambient Candlelight & Rim",
+          desc: "Sensory dining capture showcasing fine culinary artistry, premium tableware, and intimate evening ambiance in Budapest.",
+          image: "/portfolio/public/food-photo-001.jpg"
         }
       };
 
@@ -1177,6 +1295,39 @@
         heroVid.addEventListener('error', () => {
           heroImg.classList.remove('opacity-0', 'pointer-events-none');
         });
+      }
+
+      // 7. Subtle Viewport Fade-In Intersection Observer for Landing Page Sections
+      const initFadeInObserver = () => {
+        const sections = document.querySelectorAll('.fade-in-section');
+        if (!('IntersectionObserver' in window)) {
+          sections.forEach((s) => s.classList.add('is-visible'));
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: '0px 0px -40px 0px',
+            threshold: 0.08
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFadeInObserver);
+      } else {
+        initFadeInObserver();
       }
     </script>
   </body>
