@@ -244,7 +244,7 @@
                     <span>Ghent Hospitality Focus</span>
                   </div>
 
-                  <!-- Direct MP4 Video Loop -->
+                  <!-- Direct MP4 Video Loop (drink_video_001) -->
                   <video
                     id="heroShowcaseVideo"
                     autoplay
@@ -253,19 +253,23 @@
                     playsinline
                     preload="auto"
                     class="w-full h-full object-cover relative z-0"
-                    poster="/portfolio/public/assets/BrickBistro_006.jpg"
+                    poster="/portfolio/public/drink_video_001_poster.jpg"
                   >
+                    <source src="/portfolio/public/drink_video_001.mp4" type="video/mp4" />
+                    <source src="/drink_video_001.mp4" type="video/mp4" />
+                    <source src="/portfolio/public/drink-video-001.mp4" type="video/mp4" />
+                    <source src="/portfolio/public/assets/drink_video_001.mp4" type="video/mp4" />
+                    <source src="/portfolio/public/drink_video_001" type="video/mp4" />
                     <source src="/portfolio/public/assets/Ghent_Hospitality_Showreel.mp4" type="video/mp4" />
-                    <source src="/portfolio/public/assets/hero_reel.mp4" type="video/mp4" />
                   </video>
 
                   <!-- Direct Photography Layer (Displays immediately, falls back gracefully) -->
                   <img
                     id="heroShowcaseImg"
-                    src="/portfolio/public/assets/BrickBistro_006.jpg"
-                    alt="Ghent Hospitality Visual Production"
+                    src="/portfolio/public/drink_video_001_poster.jpg"
+                    alt="Drink Video 001 - Hospitality Visual Production"
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 z-[1]"
-                    onerror="this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+                    onerror="this.src='/portfolio/public/food-photo-001.jpg';"
                   />
 
                   <!-- High-Fidelity Rich Vector Fallback -->
