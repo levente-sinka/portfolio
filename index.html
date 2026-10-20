@@ -342,11 +342,12 @@
                 
                 <!-- Primary Image Asset requested by user -->
                 <img
-                  src="/portfolio/public/assets/BrickBistro_006.jpg"
-                  alt="Brick Bistro - Gastronomy & Details"
+                  src="/portfolio/public/food-photo-001.jpg"
+                  alt="Gastronomy & Details - Food Photo"
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
-                  onerror="this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/food-photo-001.jpg'; this.onerror=function(){ this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); };"
                 />
 
                 <!-- High-Fidelity Styled Fallback Vector -->
@@ -1031,11 +1032,11 @@
           desc: "Hospitality interior shoot for Turner's Cafe Bar. Emphasizing the brick archways, custom orange velvet seating, and warm globe pendant fixtures."
         },
         'turners-coffee': {
-          title: "Artisan Extraction & Ceramic Mug",
+          title: "Artisan Gastronomy & Plating",
           category: "Gastronomy & Details",
-          specs: "Macro 90mm · f/2.8 · 1/250s · Directional Rim Light & Steam Catch",
-          desc: "Close-up commercial detail of espresso extraction in branded ceramic pottery, capturing rich crema layering and rising steam.",
-          image: "/portfolio/public/assets/BrickBistro_006.jpg"
+          specs: "Macro 90mm · f/2.8 · 1/250s · Warm Ambient Dining Light",
+          desc: "Close-up culinary detail of artisan culinary presentation and delicate food staging in restaurant dining atmosphere.",
+          image: "/portfolio/public/food-photo-001.jpg"
         },
         'turners-seating': {
           title: "Sunlit Brick Corner & Armchair",
