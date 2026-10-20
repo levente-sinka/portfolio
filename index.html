@@ -552,8 +552,8 @@
               <!-- Key Credentials & Principles (Clean Tommy Retail Card Framing) -->
               <div class="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-neutral-300 text-xs">
                 <div class="p-4 bg-[#f8f9fa] border border-neutral-200 rounded-none space-y-1">
-                  <div class="font-serif text-lg font-bold text-[#001744]">Sensory Video</div>
-                  <p class="text-[12px] text-neutral-600 leading-normal">9:16 short-form reels tailored for organic reach and traveler bookings.</p>
+                  <div class="font-serif text-lg font-bold text-[#001744]">High-Retention Reels</div>
+                  <p class="text-[12px] text-neutral-600 leading-normal">Dynamic 9:16 short-form video and spatial photography designed specifically to stop the scroll and drive direct bookings.</p>
                 </div>
                 <div class="p-4 bg-[#f8f9fa] border border-neutral-200 rounded-none space-y-1">
                   <div class="font-serif text-lg font-bold text-[#001744]">Natural Lighting</div>
@@ -683,7 +683,19 @@
             <!-- Card C: Bars & Terraces -->
             <div data-gallery-cat="bars" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('penthouse-terrace')">
               <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                <svg viewBox="0 0 400 300" class="w-full h-full object-cover">
+                
+                <!-- Primary Image Asset requested by user -->
+                <img
+                  src="/portfolio/public/interior-photo-002.jpg"
+                  alt="Atmosphere & Spaces - Interior Photo 2"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/Interior-photo-002.jpg'; this.onerror=function(){ this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); };"
+                />
+
+                <!-- High-Fidelity Styled Fallback Vector -->
+                <svg viewBox="0 0 400 300" class="w-full h-full object-cover hidden">
                   <defs>
                     <linearGradient id="twilightSky" x1="0%" y1="0%" x2="0%" y2="100%">
                       <stop offset="0%" stop-color="#141a29" />
@@ -1086,7 +1098,8 @@
           title: "Rooftop Cocktail Lounge & Fire Pit",
           category: "Bars & Terraces",
           specs: "20mm Ultra-Wide · f/5.6 · Twilight Blue Hour Exposure",
-          desc: "Twilight hospitality capture of a luxury hotel rooftop terrace featuring an illuminated fire pit, evening guests, and city vistas in Budapest."
+          desc: "Twilight hospitality capture of a luxury hotel rooftop terrace featuring an illuminated fire pit, evening guests, and city vistas in Budapest.",
+          image: "/portfolio/public/interior-photo-002.jpg"
         }
       };
 
