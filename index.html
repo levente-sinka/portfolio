@@ -233,7 +233,7 @@
 
             <!-- Right Showcase Frame (4:5 Container in Tommy Retail Framing) -->
             <div class="lg:col-span-5 flex justify-center">
-              <div class="relative w-full max-w-md p-3 sm:p-3.5 bg-white shadow-xl rounded-none border border-neutral-300 photo-frame group cursor-pointer" onclick="openLightbox('turners-interior')">
+              <div class="relative w-full max-w-md p-3 sm:p-3.5 bg-white shadow-xl rounded-none border border-neutral-300 photo-frame group cursor-pointer" onclick="openLightbox('drink-video-001')">
                 
                 <!-- 4:5 Aspect Ratio Container -->
                 <div class="aspect-[4/5] w-full rounded-none overflow-hidden relative bg-[#000c24]">
@@ -244,7 +244,7 @@
                     <span>Ghent Hospitality Focus</span>
                   </div>
 
-                  <!-- Direct MP4 Video Loop (drink_video_001) -->
+                  <!-- Direct MP4 Video Loop (drink-video-001.mp4 from public) -->
                   <video
                     id="heroShowcaseVideo"
                     autoplay
@@ -253,23 +253,22 @@
                     playsinline
                     preload="auto"
                     class="w-full h-full object-cover relative z-0"
-                    poster="/portfolio/public/drink_video_001_poster.jpg"
+                    poster="/drink-video-001-poster.jpg"
+                    src="/drink-video-001.mp4"
                   >
-                    <source src="/portfolio/public/drink_video_001.mp4" type="video/mp4" />
-                    <source src="/drink_video_001.mp4" type="video/mp4" />
+                    <source src="/drink-video-001.mp4" type="video/mp4" />
+                    <source src="/public/drink-video-001.mp4" type="video/mp4" />
                     <source src="/portfolio/public/drink-video-001.mp4" type="video/mp4" />
-                    <source src="/portfolio/public/assets/drink_video_001.mp4" type="video/mp4" />
-                    <source src="/portfolio/public/drink_video_001" type="video/mp4" />
-                    <source src="/portfolio/public/assets/Ghent_Hospitality_Showreel.mp4" type="video/mp4" />
+                    <source src="/drink_video_001.mp4" type="video/mp4" />
                   </video>
 
-                  <!-- Direct Photography Layer (Displays immediately, falls back gracefully) -->
+                  <!-- Direct Photography Layer (Displays immediately, fades out when video plays) -->
                   <img
                     id="heroShowcaseImg"
-                    src="/portfolio/public/drink_video_001_poster.jpg"
+                    src="/drink-video-001-poster.jpg"
                     alt="Drink Video 001 - Hospitality Visual Production"
-                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 z-[1]"
-                    onerror="this.src='/portfolio/public/food-photo-001.jpg';"
+                    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 group-hover:scale-105 z-[1] pointer-events-none"
+                    onerror="this.style.display='none';"
                   />
 
                   <!-- High-Fidelity Rich Vector Fallback -->
@@ -1161,7 +1160,16 @@
       }
 
       // 5. Fullscreen Lightbox Data & Controls
+      // 5. Fullscreen Lightbox Data & Controls
       const lightboxData = {
+        'drink-video-001': {
+          title: "Signature Mixology & Dynamic Reels",
+          category: "Dynamic Video & Reels",
+          specs: "ARRI / Sony FX6 · 50mm Prime · 4K / 60fps · Sensory Motion Grade",
+          desc: "Dynamic short-form video crafted specifically to stop the scroll and drive direct venue bookings. Mastered for vertical platforms.",
+          video: "/drink-video-001.mp4",
+          image: "/drink-video-001-poster.jpg"
+        },
         'turners-interior': {
           title: "Turner's Cafe Bar & Terrace",
           category: "Lifestyle & Details",
@@ -1245,7 +1253,24 @@
         document.getElementById('lbSpecs').textContent = item.specs;
 
         const container = document.getElementById('lbVisualContainer');
-        if (item.image) {
+        if (item.video) {
+          container.innerHTML = `
+            <div class="w-full h-full relative flex items-center justify-center">
+              <video
+                src="${item.video}"
+                poster="${item.image || ''}"
+                autoplay
+                loop
+                muted
+                playsinline
+                controls
+                class="w-full h-full object-contain max-h-[70vh] rounded-none shadow-2xl"
+              >
+                <source src="${item.video}" type="video/mp4" />
+              </video>
+            </div>
+          `;
+        } else if (item.image) {
           container.innerHTML = `
             <div class="w-full h-full relative flex items-center justify-center">
               <img
@@ -1281,6 +1306,9 @@
 
       function closeLightbox() {
         document.getElementById('lightboxModal').classList.add('hidden');
+        // Pause any video inside lightbox when closed
+        const lbVid = document.querySelector('#lbVisualContainer video');
+        if (lbVid) lbVid.pause();
       }
 
       window.addEventListener('keydown', (e) => {
@@ -1292,13 +1320,24 @@
       // 6. Hero Showcase Video Autoplay & Poster Coordination
       const heroVid = document.getElementById('heroShowcaseVideo');
       const heroImg = document.getElementById('heroShowcaseImg');
-      if (heroVid && heroImg) {
-        heroVid.addEventListener('playing', () => {
-          heroImg.classList.add('opacity-0', 'pointer-events-none');
-        });
-        heroVid.addEventListener('error', () => {
-          heroImg.classList.remove('opacity-0', 'pointer-events-none');
-        });
+      if (heroVid) {
+        heroVid.muted = true;
+        heroVid.defaultMuted = true;
+        heroVid.playsInline = true;
+        heroVid.play().catch(() => {});
+        if (heroImg) {
+          heroVid.addEventListener('playing', () => {
+            heroImg.classList.add('opacity-0', 'pointer-events-none');
+          });
+          heroVid.addEventListener('timeupdate', () => {
+            if (heroVid.currentTime > 0.05) {
+              heroImg.classList.add('opacity-0', 'pointer-events-none');
+            }
+          });
+          heroVid.addEventListener('error', () => {
+            heroImg.classList.remove('opacity-0', 'pointer-events-none');
+          });
+        }
       }
 
       // 7. Subtle Viewport Fade-In Intersection Observer for Landing Page Sections
