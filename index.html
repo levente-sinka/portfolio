@@ -249,57 +249,39 @@
               </div>
             </div>
 
-            <!-- Right Showcase Frame (4:5 Container in Tommy Retail Framing) -->
+            <!-- Right Showcase Frame (4:5 Container with User-Specified Video) -->
             <div class="lg:col-span-5 flex justify-center">
-              <div class="relative w-full max-w-md p-3 sm:p-3.5 bg-white shadow-xl rounded-none border border-neutral-300 photo-frame group cursor-pointer" onclick="openLightbox('drink-video-001')">
+              <div class="relative w-full max-w-md p-2.5 sm:p-3 bg-white shadow-xl rounded-xl border border-neutral-300 photo-frame group cursor-pointer" onclick="openLightbox('drink-video-001')">
                 
                 <!-- 4:5 Aspect Ratio Container -->
-                <div class="aspect-[4/5] w-full rounded-none overflow-hidden relative bg-[#000c24]">
+                <div class="aspect-[4/5] w-full rounded-xl overflow-hidden relative bg-[#000c24]">
                   
                   <!-- Ghent Hospitality Focus Badge in corner -->
-                  <div class="absolute top-3.5 left-3.5 z-20 flex items-center gap-2 bg-[#001744]/95 backdrop-blur-md px-3.5 py-1.5 rounded-none border border-white/20 text-[11px] font-mono tracking-wider uppercase text-white shadow-lg">
+                  <div class="absolute top-3.5 left-3.5 z-20 flex items-center gap-2 bg-[#001744]/95 backdrop-blur-md px-3.5 py-1.5 rounded-md border border-white/20 text-[11px] font-mono tracking-wider uppercase text-white shadow-lg">
                     <span class="w-2 h-2 bg-[#cc0c2f]"></span>
                     <span>Ghent Hospitality Focus</span>
                   </div>
 
-                  <!-- Direct MP4 Video Loop (drink-video-001.mp4 from public) -->
+                  <!-- Direct MP4 Video Loop (drink-video-001.mp4) -->
                   <video
                     id="heroShowcaseVideo"
+                    src="/portfolio/drink-video-001.mp4"
                     autoplay
                     loop
                     muted
                     playsinline
-                    preload="auto"
-                    class="w-full h-full object-cover relative z-0"
-                    poster="/drink-video-001-poster.jpg"
-                    src="/drink-video-001.mp4"
+                    class="w-full h-full object-cover rounded-xl"
                   >
+                    <source src="/portfolio/drink-video-001.mp4" type="video/mp4" />
                     <source src="/drink-video-001.mp4" type="video/mp4" />
-                    <source src="/public/drink-video-001.mp4" type="video/mp4" />
                     <source src="/portfolio/public/drink-video-001.mp4" type="video/mp4" />
-                    <source src="/drink_video_001.mp4" type="video/mp4" />
                   </video>
 
-                  <!-- Direct Photography Layer (Displays immediately, fades out when video plays) -->
-                  <img
-                    id="heroShowcaseImg"
-                    src="/drink-video-001-poster.jpg"
-                    alt="Drink Video 001 - Hospitality Visual Production"
-                    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 group-hover:scale-105 z-[1] pointer-events-none"
-                    onerror="this.style.display='none';"
-                  />
-
-                  <!-- High-Fidelity Rich Vector Fallback -->
-                  <div class="absolute inset-0 hidden z-0 bg-[#001744] flex flex-col justify-between p-6">
-                    <div class="h-full flex flex-col justify-center items-center text-center space-y-4">
-                      <div class="w-16 h-16 rounded-none border border-white/40 flex items-center justify-center bg-[#000c24]">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div class="font-serif text-2xl text-white">Ghent Culinary &amp; Architecture</div>
-                      <p class="text-xs text-neutral-300 max-w-xs font-light">Sensory dynamic reels and interior photography master.</p>
-                    </div>
+                  <!-- Direct Fullscreen Tap Overlay -->
+                  <div class="absolute inset-0 bg-[#001744]/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none rounded-xl">
+                    <span class="px-5 py-2.5 bg-white text-[#001744] text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
+                      Play Fullscreen Reel
+                    </span>
                   </div>
 
                   <!-- Subtle Bottom Aesthetic Bar -->
