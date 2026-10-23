@@ -650,21 +650,20 @@
           <!-- Gallery Grid (Tommy Clean Rectangular Media Cards) -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="galleryGrid">
 
-            <!-- Card A: Gastronomy -->
-            <div data-gallery-cat="gastronomy" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('culinary-plated')">
+            <!-- Card A: Luxury Interior & Architecture (Interior 003) -->
+            <div data-gallery-cat="hotels" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('grand-suite-interior')">
               <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                <svg viewBox="0 0 400 300" class="w-full h-full object-cover">
-                  <rect width="400" height="300" fill="#1b1510" />
-                  <rect x="0" y="80" width="400" height="220" fill="#2d2621" />
-                  <circle cx="200" cy="180" r="90" fill="#120e0b" stroke="#3d332a" stroke-width="3" />
-                  <path d="M 160 180 Q 200 160 240 180 Q 200 200 160 180 Z" fill="#e07248" />
-                  <circle cx="160" cy="155" r="5" fill="#f0c868" />
-                  <circle cx="230" cy="195" r="4" fill="#f0c868" />
-                  <circle cx="215" cy="150" r="6" fill="#88aa66" />
-                  <circle cx="180" cy="205" r="5" fill="#88aa66" />
-                  <path d="M 140 140 Q 240 130 250 210" fill="none" stroke="#668844" stroke-width="4" stroke-linecap="round" />
-                  <ellipse cx="200" cy="100" rx="140" ry="40" fill="#ffffff" fill-opacity="0.08" />
-                </svg>
+                <img
+                  src="/interior-photo-003.jpg"
+                  alt="Luxury Boutique Residence - Interior 003"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/portfolio/public/interior-photo-003.jpg'; this.onerror=function(){ this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); };"
+                />
+                <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
+                  <div class="font-serif text-xl">Luxury Boutique Residence</div>
+                </div>
                 <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
                     View Fullscreen
@@ -672,15 +671,25 @@
                 </div>
               </div>
               <div class="flex justify-between items-baseline">
-                <h4 class="text-xl font-serif text-[#001744] font-semibold">Degustation Plating &amp; Macro</h4>
-                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Fine Dining (Vienna)</span>
+                <h4 class="text-xl font-serif text-[#001744] font-semibold">Luxury Boutique Residence</h4>
+                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Suites &amp; Living (Ghent)</span>
               </div>
             </div>
 
-            <!-- Card B: Hotels -->
             <div data-gallery-cat="hotels" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('boutique-suite')">
               <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                <svg viewBox="0 0 400 300" class="w-full h-full object-cover">
+                <!-- Primary Image Asset requested by user -->
+                <img
+                  src="/interior-photo-005.jpg"
+                  alt="Heritage Suite Architecture - Interior Photo 5"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                  onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-005.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/public/interior-photo-005.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+                />
+
+                <!-- High-Fidelity Styled Fallback Vector -->
+                <svg viewBox="0 0 400 300" class="w-full h-full object-cover hidden">
                   <rect width="400" height="300" fill="#241a12" />
                   <rect x="70" y="140" width="260" height="130" fill="#eae3d7" rx="4" />
                   <rect x="80" y="120" width="115" height="35" rx="4" fill="#ffffff" />
@@ -747,19 +756,19 @@
               </div>
             </div>
 
-            <!-- Card D: Boutique Hotel Residence (Interior 003) -->
-            <div data-gallery-cat="hotels" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('grand-suite-interior')">
+            <!-- Card D: Atmospheric Spaces (Interior 001) -->
+            <div data-gallery-cat="bars" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('turners-seating')">
               <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
                 <img
-                  src="/portfolio/public/interior-photo-003.jpg"
-                  alt="Luxury Boutique Residence - Interior"
+                  src="/portfolio/public/interior-photo-001.jpg"
+                  alt="Atmosphere & Spaces - Interior 001"
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                   referrerpolicy="no-referrer"
-                  onerror="this.src='/interior-photo-003.jpg'; this.onerror=function(){ this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); };"
+                  onerror="this.src='/interior-photo-001.jpg'; this.onerror=function(){ this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); };"
                 />
                 <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                  <div class="font-serif text-xl">Luxury Boutique Residence</div>
+                  <div class="font-serif text-xl">Sunlit Brick Corner &amp; Armchair</div>
                 </div>
                 <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
@@ -768,8 +777,8 @@
                 </div>
               </div>
               <div class="flex justify-between items-baseline">
-                <h4 class="text-xl font-serif text-[#001744] font-semibold">Luxury Boutique Residence</h4>
-                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Suites &amp; Living (Ghent)</span>
+                <h4 class="text-xl font-serif text-[#001744] font-semibold">Sunlit Brick Corner &amp; Armchair</h4>
+                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Atmosphere &amp; Spaces (Ghent)</span>
               </div>
             </div>
 
@@ -1201,7 +1210,8 @@
           title: "Heritage Hotel Palace Suite",
           category: "Boutique Hotels",
           specs: "16-35mm · f/4.0 · Balanced Sconce & Daylight",
-          desc: "Staged guestroom suite photography highlighting rich walnut woodwork, crisp linen textures, and ambient lighting in Brussels."
+          desc: "Staged guestroom suite photography highlighting rich walnut woodwork, crisp linen textures, and ambient lighting in Brussels.",
+          image: "/interior-photo-005.jpg"
         },
         'penthouse-terrace': {
           title: "Rooftop Cocktail Lounge & Fire Pit",
@@ -1277,7 +1287,7 @@
                 src="${item.image}"
                 alt="${item.title}"
                 class="w-full h-full object-contain max-h-[70vh] rounded-none"
-                onerror="this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+                onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src = this.getAttribute('src').startsWith('/portfolio/public') ? this.getAttribute('src').replace('/portfolio/public', '') : ('/portfolio/public' + (this.getAttribute('src').startsWith('/') ? '' : '/') + this.getAttribute('src')); } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
               />
               <div class="hidden text-center p-8 space-y-3">
                 <div class="text-xs uppercase tracking-[0.25em] font-mono text-[#cc0c2f] font-bold">${item.category}</div>
