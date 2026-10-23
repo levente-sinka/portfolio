@@ -376,12 +376,12 @@
                 
                 <!-- Primary Image Asset requested by user -->
                 <img
-                  src="/portfolio/public/food-photo-001.jpg"
-                  alt="Gastronomy & Details - Food Photo"
+                  src="/architecture-photo-002.jpg"
+                  alt="Architecture & Facades - Architecture Photo 2"
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                   referrerpolicy="no-referrer"
-                  onerror="this.src='/food-photo-001.jpg'; this.onerror=function(){ this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); };"
+                  onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/architetcture-photo-002.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/portfolio/public/architecture-photo-002.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
                 />
 
                 <!-- High-Fidelity Styled Fallback Vector -->
@@ -419,7 +419,7 @@
               <!-- Caption -->
               <div class="text-center">
                 <h3 class="text-2xl font-serif text-[#001744] tracking-wide group-hover:text-[#cc0c2f] transition-colors">
-                  Food &amp; Gastronomy
+                  Architecture &amp; Facades
                 </h3>
               </div>
             </div>
@@ -756,19 +756,19 @@
               </div>
             </div>
 
-            <!-- Card D: Atmospheric Spaces (Interior 001) -->
-            <div data-gallery-cat="bars" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('turners-seating')">
+            <!-- Card D: Heritage Architecture (Architecture 003) -->
+            <div data-gallery-cat="hotels" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('architecture-facade-003')">
               <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
                 <img
-                  src="/portfolio/public/interior-photo-001.jpg"
-                  alt="Atmosphere & Spaces - Interior 001"
+                  src="/architetcture-photo-003.jpg"
+                  alt="Classical Architectural Detail - Architecture 003"
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                   referrerpolicy="no-referrer"
-                  onerror="this.src='/interior-photo-001.jpg'; this.onerror=function(){ this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); };"
+                  onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/architecture-photo-003.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/portfolio/public/architetcture-photo-003.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
                 />
                 <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                  <div class="font-serif text-xl">Sunlit Brick Corner &amp; Armchair</div>
+                  <div class="font-serif text-xl">Classical Architectural Detail</div>
                 </div>
                 <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
@@ -777,24 +777,24 @@
                 </div>
               </div>
               <div class="flex justify-between items-baseline">
-                <h4 class="text-xl font-serif text-[#001744] font-semibold">Sunlit Brick Corner &amp; Armchair</h4>
-                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Atmosphere &amp; Spaces (Ghent)</span>
+                <h4 class="text-xl font-serif text-[#001744] font-semibold">Classical Architectural Detail</h4>
+                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Heritage Architecture (Vienna)</span>
               </div>
             </div>
 
-            <!-- Card E: Heritage Architecture (Architecture 001) -->
-            <div data-gallery-cat="hotels" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('heritage-facade')">
+            <!-- Card E: Culinary Atmosphere (Food 003) -->
+            <div data-gallery-cat="gastronomy" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('food-styling-003')">
               <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
                 <img
-                  src="/portfolio/public/architecture-photo-001.jpg"
-                  alt="Heritage Architecture & Facade"
+                  src="/food-photo-003.jpg"
+                  alt="Artisan Culinary Staging - Food 003"
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                   referrerpolicy="no-referrer"
-                  onerror="this.src='/architecture-photo-001.jpg'; this.onerror=function(){ this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); };"
+                  onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/food-photo-003.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
                 />
                 <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                  <div class="font-serif text-xl">Grand Heritage Architecture</div>
+                  <div class="font-serif text-xl">Artisan Culinary Staging</div>
                 </div>
                 <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
@@ -803,8 +803,8 @@
                 </div>
               </div>
               <div class="flex justify-between items-baseline">
-                <h4 class="text-xl font-serif text-[#001744] font-semibold">Grand Heritage Architecture</h4>
-                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Historic Facades (Vienna)</span>
+                <h4 class="text-xl font-serif text-[#001744] font-semibold">Artisan Culinary Staging</h4>
+                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Gastronomy &amp; Plating</span>
               </div>
             </div>
 
@@ -1187,11 +1187,11 @@
           image: "/portfolio/public/food-photo-002.jpg"
         },
         'turners-coffee': {
-          title: "Artisan Gastronomy & Plating",
-          category: "Food & Gastronomy",
-          specs: "Macro 90mm · f/2.8 · 1/250s · Warm Ambient Dining Light",
-          desc: "Close-up culinary detail of artisan culinary presentation and delicate food staging in restaurant dining atmosphere.",
-          image: "/portfolio/public/food-photo-001.jpg"
+          title: "Heritage Architecture & Elevation",
+          category: "Architecture & Spaces",
+          specs: "24mm Tilt-Shift · f/5.6 · 1/125s · Natural Golden Hour Elevation",
+          desc: "Architectural and facade capture emphasizing stately classical design, clean geometric lines, and prestigious hospitality presence.",
+          image: "/architecture-photo-002.jpg"
         },
         'turners-seating': {
           title: "Sunlit Brick Corner & Armchair",
@@ -1240,6 +1240,20 @@
           specs: "50mm Prime · f/1.8 · Warm Ambient Candlelight & Rim",
           desc: "Sensory dining capture showcasing fine culinary artistry, premium tableware, and intimate evening ambiance in Budapest.",
           image: "/portfolio/public/food-photo-001.jpg"
+        },
+        'architecture-facade-003': {
+          title: "Classical Architectural Detail",
+          category: "Heritage Architecture",
+          specs: "24mm Tilt-Shift · f/5.6 · 1/250s · Golden Hour Daylight",
+          desc: "Stately historic facade and elevation capture emphasizing neoclassical columns, stone relief, and grand hospitality architecture in Vienna.",
+          image: "/architetcture-photo-003.jpg"
+        },
+        'food-styling-003': {
+          title: "Artisan Culinary Staging",
+          category: "Food & Gastronomy",
+          specs: "85mm Macro · f/2.4 · 1/200s · Natural Daylight & Soft Diffuser",
+          desc: "Sensory gastronomy staging capturing fine culinary plating, authentic ingredients, and premium dining atmosphere.",
+          image: "/food-photo-003.jpg"
         }
       };
 
