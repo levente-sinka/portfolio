@@ -270,7 +270,8 @@
                     loop
                     muted
                     playsinline
-                    class="w-full h-auto object-cover rounded-xl"
+                    preload="auto"
+                    class="w-full h-full object-cover rounded-xl"
                   >
                     <source src="/portfolio/drink-video-001.mp4" type="video/mp4" />
                     <source src="/drink-video-001.mp4" type="video/mp4" />
@@ -1426,27 +1427,23 @@
         }, { passive: true });
       }
 
-      // 6. Hero Showcase Video Autoplay & Poster Coordination
+      // 6. Hero Showcase Video Autoplay & Reliability
       const heroVid = document.getElementById('heroShowcaseVideo');
-      const heroImg = document.getElementById('heroShowcaseImg');
       if (heroVid) {
         heroVid.muted = true;
         heroVid.defaultMuted = true;
         heroVid.playsInline = true;
-        heroVid.play().catch(() => {});
-        if (heroImg) {
-          heroVid.addEventListener('playing', () => {
-            heroImg.classList.add('opacity-0', 'pointer-events-none');
-          });
-          heroVid.addEventListener('timeupdate', () => {
-            if (heroVid.currentTime > 0.05) {
-              heroImg.classList.add('opacity-0', 'pointer-events-none');
-            }
-          });
-          heroVid.addEventListener('error', () => {
-            heroImg.classList.remove('opacity-0', 'pointer-events-none');
-          });
-        }
+        const startVideo = () => {
+          if (heroVid.paused) {
+            heroVid.play().catch(() => {});
+          }
+        };
+        startVideo();
+        heroVid.addEventListener('loadeddata', startVideo, { once: true });
+        heroVid.addEventListener('canplay', startVideo, { once: true });
+        // Fallback for strict mobile policies: resume on first touch/click
+        document.addEventListener('touchstart', startVideo, { once: true });
+        document.addEventListener('click', startVideo, { once: true });
       }
 
       // 7. Subtle Viewport Fade-In Intersection Observer for Landing Page Sections
