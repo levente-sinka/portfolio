@@ -91,10 +91,10 @@
         transform: translateY(0);
       }
       /* Hide scrollbar for horizontal category filter on mobile */
-      .no-scrollbar::-webkit-scrollbar {
+      .no-scrollbar::-webkit-scrollbar, .hide-scrollbar::-webkit-scrollbar {
         display: none;
       }
-      .no-scrollbar {
+      .no-scrollbar, .hide-scrollbar {
         -ms-overflow-style: none;
         scrollbar-width: none;
       }
@@ -111,6 +111,57 @@
           opacity: 1 !important;
           transform: none !important;
           transition: none !important;
+        }
+      }
+
+      /* Mobile Optimizations (max-width: 768px) */
+      @media (max-width: 768px) {
+        /* Fejléc CTA: Rejtsd el a felső navigációs menüben (header) lévő 'INQUIRE' gombot */
+        header .shrink-0 > a[href="#contact"],
+        header a[href="#contact"].bg-\[\#001744\] {
+          display: none !important;
+        }
+
+        /* Portfólió feliratok: Címek és piros kategória címkék egymás alá rendezése balra igazítva */
+        .gallery-item .flex.justify-between.items-baseline,
+        .gallery-item .flex.justify-between,
+        #portfolio .gallery-item .flex.justify-between {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          gap: 0.35rem !important;
+          text-align: left !important;
+        }
+
+        .gallery-item .flex.justify-between > *,
+        #portfolio .gallery-item .flex.justify-between > * {
+          text-align: left !important;
+        }
+
+        .gallery-item .flex.justify-between span,
+        .gallery-item span.text-\[\#cc0c2f\],
+        #portfolio .gallery-item span.text-\[\#cc0c2f\] {
+          margin-left: 0 !important;
+          padding-left: 0 !important;
+          text-align: left !important;
+        }
+
+        /* Hero gombok: Vékonyabb, elegánsabb Hero CTA gombok csökkentett paddinggel és finomabb betűmérettel */
+        main section:first-of-type .pt-2.flex a,
+        main section:first-of-type a[href="#contact"].bg-\[\#001744\],
+        main section:first-of-type a[href*="wa.me"] {
+          padding: 12px 16px !important;
+          font-size: 11px !important;
+          letter-spacing: 0.12em !important;
+          line-height: 1.25 !important;
+        }
+
+        /* Űrlap iOS optimalizálás: Fix 16px betűméret az input és textarea mezőkhöz (Safari auto-zoom megakadályozása) */
+        #contactForm input,
+        #contactForm textarea,
+        #contact input,
+        #contact textarea {
+          font-size: 16px !important;
         }
       }
     </style>
@@ -249,20 +300,14 @@
               </div>
             </div>
 
-            <!-- Right Showcase Frame (4:5 Container with drink-video-001.mp4) -->
-            <div class="lg:col-span-5 flex justify-center">
+            <!-- Right Showcase Frame (4:5 Container with User-Specified Video) -->
+            <div class="lg:col-span-5 flex justify-center w-full">
               <div class="relative w-full max-w-md p-2.5 sm:p-3 bg-white shadow-xl rounded-xl border border-neutral-300 photo-frame group cursor-pointer" onclick="openLightbox('drink-video-001')">
                 
-                <!-- 4:5 Aspect Ratio Container -->
-                <div class="aspect-[4/5] w-full rounded-xl overflow-hidden relative bg-[#000c24]">
+                <!-- 4:5 Aspect Ratio Container with h-auto and clean visual framing -->
+                <div class="aspect-[4/5] w-full h-auto rounded-xl overflow-hidden relative bg-[#000c24]">
                   
-                  <!-- Ghent Hospitality Focus Badge in corner -->
-                  <div class="absolute top-3.5 left-3.5 z-20 flex items-center gap-2 bg-[#001744]/95 backdrop-blur-md px-3.5 py-1.5 rounded-md border border-white/20 text-[11px] font-mono tracking-wider uppercase text-white shadow-lg">
-                    <span class="w-2 h-2 bg-[#cc0c2f]"></span>
-                    <span>Ghent Hospitality Focus</span>
-                  </div>
-
-                  <!-- Direct MP4 Video Loop (video-001.mp4) -->
+                  <!-- Direct MP4 Video Loop (video-001.mp4) Background Layer -->
                   <video
                     id="heroShowcaseVideo"
                     src="./portfolio/public/video-001.mp4"
@@ -271,26 +316,17 @@
                     muted
                     playsinline
                     preload="auto"
-                    class="w-full h-full object-cover rounded-xl"
+                    class="absolute inset-0 w-full h-full object-cover rounded-xl"
                   >
                     <source src="./portfolio/public/video-001.mp4" type="video/mp4" />
                     <source src="/portfolio/public/video-001.mp4" type="video/mp4" />
                   </video>
 
                   <!-- Direct Fullscreen Tap Overlay -->
-                  <div class="absolute inset-0 bg-[#001744]/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none rounded-xl">
+                  <div class="absolute inset-0 bg-[#001744]/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none rounded-xl z-10">
                     <span class="px-5 py-2.5 bg-white text-[#001744] text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
                       Play Fullscreen Reel
                     </span>
-                  </div>
-
-                  <!-- Subtle Bottom Aesthetic Bar -->
-                  <div class="absolute bottom-3.5 inset-x-3.5 z-20 flex items-center justify-between text-xs text-white bg-[#001744]/90 backdrop-blur-md px-3.5 py-2 rounded-none border border-white/10">
-                    <div class="flex items-center gap-2">
-                      <span class="w-1.5 h-1.5 bg-[#cc0c2f]"></span>
-                      <span class="font-mono text-[11px] text-white">Sensory Short-Form &amp; Spaces</span>
-                    </div>
-                    <span class="text-[10px] uppercase font-mono tracking-wider text-neutral-300">4K / 60fps Master</span>
                   </div>
 
                 </div>
@@ -303,7 +339,7 @@
 
       <!-- RECENT PROJECTS SECTION (Tommy Hilfiger Clean Collection Showcase) -->
       <section id="recent-projects" class="py-20 sm:py-28 bg-[#f5f6f9] text-[#001744] border-b border-neutral-200 fade-in-section">
-        <div class="max-w-7xl mx-auto px-6 space-y-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-10 sm:space-y-12">
           
           <!-- Heading with Tommy Signature Ribbon Accent -->
           <div class="text-center space-y-3">
@@ -492,7 +528,7 @@
 
       <!-- ABOUT ME SECTION (Levente Sinka - Hospitality Visual Production) -->
       <section id="about" class="py-20 sm:py-28 bg-white border-b border-neutral-200 relative overflow-hidden fade-in-section">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             <!-- Left Column: Editorial Portrait in Tommy Architectural Frame -->
@@ -572,16 +608,16 @@
               </div>
 
               <!-- Key Credentials & Principles (Clean Tommy Retail Card Framing) -->
-              <div class="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-neutral-300 text-xs">
-                <div class="p-4 bg-[#f8f9fa] border border-neutral-200 rounded-none space-y-1">
+              <div class="pt-4 flex flex-col sm:grid sm:grid-cols-3 gap-4 border-t border-neutral-300 text-xs">
+                <div class="p-4 sm:p-5 bg-[#f8f9fa] border border-neutral-200 rounded-none space-y-1.5">
                   <div class="font-serif text-lg font-bold text-[#001744]">High-Retention Reels</div>
                   <p class="text-[12px] text-neutral-600 leading-normal">Dynamic 9:16 short-form video and spatial photography designed specifically to stop the scroll and drive direct bookings.</p>
                 </div>
-                <div class="p-4 bg-[#f8f9fa] border border-neutral-200 rounded-none space-y-1">
+                <div class="p-4 sm:p-5 bg-[#f8f9fa] border border-neutral-200 rounded-none space-y-1.5">
                   <div class="font-serif text-lg font-bold text-[#001744]">Natural Lighting</div>
                   <p class="text-[12px] text-neutral-600 leading-normal">Preserving authentic ambient mood with balanced soft bounce fill.</p>
                 </div>
-                <div class="p-4 bg-[#f8f9fa] border border-neutral-200 rounded-none space-y-1">
+                <div class="p-4 sm:p-5 bg-[#f8f9fa] border border-neutral-200 rounded-none space-y-1.5">
                   <div class="font-serif text-lg font-bold text-[#001744]">3–4 Day Delivery</div>
                   <p class="text-[12px] text-neutral-600 leading-normal">Color-graded, press-ready, and mobile-delivered master files.</p>
                 </div>
@@ -620,7 +656,7 @@
 
       <!-- HOSPITALITY ARCHIVE (Categorized Showcase in Tommy Retail Grid) -->
       <section id="portfolio" class="py-20 border-b border-neutral-200 bg-white fade-in-section">
-        <div class="max-w-7xl mx-auto px-6 space-y-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-10 sm:space-y-12">
           
           <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div class="space-y-3">
@@ -630,235 +666,355 @@
               </h2>
             </div>
 
-            <!-- Category Filter Tabs (Tommy Segmented Control with Mobile Touch Scroll) -->
-            <div class="w-full md:w-auto overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 py-1">
-              <div class="inline-flex items-center gap-1.5 p-1 bg-neutral-100 border border-neutral-300 rounded-none text-xs min-w-max">
-                <button onclick="filterGallery('all')" data-cat="all" class="cat-btn shrink-0 px-4 py-2.5 font-bold tracking-wider uppercase transition-colors bg-[#001744] text-white rounded-none">
+            <!-- Category Filter Tabs (Horizontally scrollable & wrapped for clean mobile access) -->
+            <div class="w-full md:w-auto overflow-x-auto hide-scrollbar whitespace-nowrap py-1">
+              <div class="flex flex-wrap sm:flex-nowrap items-center justify-start sm:justify-center gap-1.5 p-1 bg-neutral-100 border border-neutral-300 rounded-none text-xs w-full sm:w-auto">
+                <button onclick="filterGallery('all')" data-cat="all" class="cat-btn shrink-0 px-3.5 sm:px-4 py-2 sm:py-2.5 font-bold tracking-wider uppercase transition-colors bg-[#001744] text-white rounded-none">
                   All Works
                 </button>
-                <button onclick="filterGallery('gastronomy')" data-cat="gastronomy" class="cat-btn shrink-0 px-4 py-2.5 font-bold tracking-wider uppercase transition-colors text-neutral-700 hover:text-[#001744] rounded-none">
+                <button onclick="filterGallery('gastronomy')" data-cat="gastronomy" class="cat-btn shrink-0 px-3.5 sm:px-4 py-2 sm:py-2.5 font-bold tracking-wider uppercase transition-colors text-neutral-700 hover:text-[#001744] rounded-none">
                   Gastronomy
                 </button>
-                <button onclick="filterGallery('hotels')" data-cat="hotels" class="cat-btn shrink-0 px-4 py-2.5 font-bold tracking-wider uppercase transition-colors text-neutral-700 hover:text-[#001744] rounded-none">
+                <button onclick="filterGallery('hotels')" data-cat="hotels" class="cat-btn shrink-0 px-3.5 sm:px-4 py-2 sm:py-2.5 font-bold tracking-wider uppercase transition-colors text-neutral-700 hover:text-[#001744] rounded-none">
                   Boutique Hotels
                 </button>
-                <button onclick="filterGallery('bars')" data-cat="bars" class="cat-btn shrink-0 px-4 py-2.5 font-bold tracking-wider uppercase transition-colors text-neutral-700 hover:text-[#001744] rounded-none">
+                <button onclick="filterGallery('bars')" data-cat="bars" class="cat-btn shrink-0 px-3.5 sm:px-4 py-2 sm:py-2.5 font-bold tracking-wider uppercase transition-colors text-neutral-700 hover:text-[#001744] rounded-none">
                   Bars &amp; Terraces
                 </button>
               </div>
             </div>
           </div>
 
-          <!-- Gallery Grid (Tommy Clean Rectangular Media Cards) -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start" id="galleryGrid">
-
-            <!-- Card 1: Stately Heritage Residence (Interior 004) - ÁLLÓ (4:5) - Featured -->
-            <div data-gallery-cat="hotels" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('grand-salon-004')">
-              <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                <img
-                  src="./portfolio/public/interior-photo-004.jpg"
-                  alt="Stately Heritage Residence - Interior Photo 004"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  referrerpolicy="no-referrer"
-                  onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-004.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-004.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
-                />
-                <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                  <div class="font-serif text-xl">Stately Heritage Residence</div>
+          <!-- EXCLUSIVE 9:16 VERTICAL VIDEO REELS SHOWCASE (Separated from Photos with Bespoke Device Frames) -->
+          <div class="p-6 sm:p-10 bg-[#f8f9fa] border border-neutral-200 rounded-none space-y-6 sm:space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-neutral-300 pb-5">
+              <div class="space-y-1.5">
+                <div class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#cc0c2f] font-bold">
+                  <span class="w-2 h-2 bg-[#cc0c2f] rounded-full animate-ping"></span>
+                  <span>9:16 Motion Production</span>
                 </div>
-                <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                    View Fullscreen
-                  </span>
-                </div>
+                <h3 class="text-2xl sm:text-4xl font-serif text-[#001744] font-normal">
+                  Hospitality Reels &amp; Sensory Motion
+                </h3>
               </div>
-              <div class="flex justify-between items-baseline">
-                <h4 class="text-xl font-serif text-[#001744] font-semibold">Stately Heritage Residence</h4>
-                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Suites &amp; Grand Living (Ghent)</span>
+              <div class="text-xs font-mono text-neutral-500 uppercase tracking-wider">
+                9:16 Format · Optimized for Mobile Feed &amp; Direct Bookings
               </div>
             </div>
 
-            <!-- Card 2: Signature Gastronomy (Food 001) - ÁLLÓ (4:5) - Featured -->
-            <div data-gallery-cat="gastronomy" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('artisan-table-setting')">
-              <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                <img
-                  src="./portfolio/public/food-photo-001.jpg"
-                  alt="Signature Gastronomy Staging - Food Photo 001"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  referrerpolicy="no-referrer"
-                  onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/food-photo-001.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/food-photo-001.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
-                />
-                <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                  <div class="font-serif text-xl">Signature Gastronomy Atmosphere</div>
-                </div>
-                <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                    View Fullscreen
-                  </span>
-                </div>
-              </div>
-              <div class="flex justify-between items-baseline">
-                <h4 class="text-xl font-serif text-[#001744] font-semibold">Signature Gastronomy Staging</h4>
-                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Fine Dining &amp; Plating (Budapest)</span>
-              </div>
-            </div>
+            <!-- Two 9:16 Video Device Frames Side-by-Side -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-14 max-w-3xl mx-auto py-2">
+              
+              <!-- Video Frame 1: video-002.mov (Bars & Atmosphere) -->
+              <div class="flex flex-col items-center space-y-4">
+                <!-- Smartphone Device Frame with Bezel and Shadows -->
+                <div 
+                  class="relative w-full max-w-[270px] sm:max-w-[290px] p-3 sm:p-3.5 bg-gradient-to-b from-[#1c2738] via-[#000c24] to-[#001744] rounded-[44px] border-2 border-neutral-600/70 shadow-2xl shadow-[#001744]/25 ring-1 ring-white/10 group cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-[#cc0c2f]/20"
+                  onclick="openLightbox('video-002')"
+                >
+                  <!-- Phone Top Speaker Pill / Island -->
+                  <div class="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-black/90 rounded-full z-20 flex items-center justify-center gap-1.5 pointer-events-none border border-neutral-800">
+                    <span class="w-2 h-2 rounded-full bg-neutral-900 border border-neutral-700"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#cc0c2f]/70"></span>
+                  </div>
 
-            <!-- Card 3: Classical Grand Portal (Architecture 001) - ÁLLÓ (4:5) - Featured -->
-            <div data-gallery-cat="bars" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('heritage-facade')">
-              <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                <img
-                  src="./portfolio/public/architecture-photo-001.jpg"
-                  alt="Classical Grand Portal - Architecture Photo 001"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  referrerpolicy="no-referrer"
-                  onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/architecture-photo-001.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/architecture-photo-001.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
-                />
-                <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                  <div class="font-serif text-xl">Classical Grand Portal</div>
-                </div>
-                <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                    View Fullscreen
-                  </span>
-                </div>
-              </div>
-              <div class="flex justify-between items-baseline">
-                <h4 class="text-xl font-serif text-[#001744] font-semibold">Classical Grand Portal</h4>
-                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Heritage Architecture (Vienna)</span>
-              </div>
-            </div>
+                  <!-- 9:16 Screen Container -->
+                  <div class="aspect-[9/16] w-full rounded-[32px] overflow-hidden relative bg-black">
+                    <video
+                      src="./portfolio/public/video-002.mov"
+                      autoplay
+                      loop
+                      muted
+                      playsinline
+                      preload="auto"
+                      class="w-full h-full object-cover"
+                      onerror="this.classList.add('opacity-0'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+                    >
+                      <source src="./portfolio/public/video-002.mov" type="video/quicktime" />
+                      <source src="./portfolio/public/video-002.mp4" type="video/mp4" />
+                      <source src="./public/portfolio/public/video-002.mov" type="video/quicktime" />
+                      <source src="/portfolio/public/video-002.mov" type="video/quicktime" />
+                      <source src="/portfolio/public/video-002.mp4" type="video/mp4" />
+                      <source src="./video-002.mov" type="video/quicktime" />
+                      <source src="./video-002.mp4" type="video/mp4" />
+                    </video>
 
-            <!-- Card 4: Luxury Interior Residence (Interior 003) - FEKVŐ (4:3) - Featured -->
-            <div data-gallery-cat="hotels" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('grand-suite-interior')">
-              <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                <img
-                  src="./portfolio/public/interior-photo-003.jpg"
-                  alt="Luxury Boutique Residence - Interior 003"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  referrerpolicy="no-referrer"
-                  onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-003.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-003.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
-                />
-                <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                  <div class="font-serif text-xl">Luxury Boutique Residence</div>
-                </div>
-                <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                    View Fullscreen
-                  </span>
-                </div>
-              </div>
-              <div class="flex justify-between items-baseline">
-                <h4 class="text-xl font-serif text-[#001744] font-semibold">Luxury Boutique Residence</h4>
-                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Suites &amp; Living (Ghent)</span>
-              </div>
-            </div>
+                    <!-- Elegant Fallback State -->
+                    <div class="hidden absolute inset-0 w-full h-full bg-[#000c24] flex flex-col items-center justify-center p-6 text-center">
+                      <div class="w-12 h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center mb-3">
+                        <svg class="w-5 h-5 text-[#cc0c2f]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                      </div>
+                      <span class="text-xs uppercase tracking-widest font-mono text-white/90">video-002.mov</span>
+                      <span class="text-[11px] text-neutral-400 font-sans mt-1">Cinematic Atmosphere Reel</span>
+                    </div>
 
-            <!-- Card 5: Culinary Atmosphere (Food 003) - FEKVŐ (4:3) - Featured -->
-            <div data-gallery-cat="gastronomy" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('food-styling-003')">
-              <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                <img
-                  src="./portfolio/public/food-photo-003.jpg"
-                  alt="Artisan Culinary Staging - Food 003"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  referrerpolicy="no-referrer"
-                  onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/food-photo-003.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/food-photo-003.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
-                />
-                <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                  <div class="font-serif text-xl">Artisan Culinary Staging</div>
-                </div>
-                <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                    View Fullscreen
-                  </span>
-                </div>
-              </div>
-              <div class="flex justify-between items-baseline">
-                <h4 class="text-xl font-serif text-[#001744] font-semibold">Artisan Culinary Staging</h4>
-                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Gastronomy &amp; Plating</span>
-              </div>
-            </div>
+                    <!-- Top 9:16 Tag -->
+                    <div class="absolute top-8 left-3 z-10 flex items-center gap-1.5 bg-[#001744]/80 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase text-white border border-white/20">
+                      <span class="w-1.5 h-1.5 bg-[#cc0c2f] rounded-full animate-pulse"></span>
+                      <span>9:16 Reel</span>
+                    </div>
 
-            <!-- Card 6: Rooftop Cocktail Lounge (Interior 002) - FEKVŐ (4:3) - Featured -->
-            <div data-gallery-cat="bars" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('penthouse-terrace')">
-              <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                <img
-                  src="./portfolio/public/interior-photo-002.jpg"
-                  alt="Atmosphere & Spaces - Interior Photo 2"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  referrerpolicy="no-referrer"
-                  onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-002.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/Interior-photo-002.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
-                />
-                <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                  <div class="font-serif text-xl">Rooftop Cocktail Lounge</div>
-                </div>
-                <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                    View Fullscreen
-                  </span>
-                </div>
-              </div>
-              <div class="flex justify-between items-baseline">
-                <h4 class="text-xl font-serif text-[#001744] font-semibold">Rooftop Cocktail Lounge</h4>
-                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Twilight Terrace (Budapest)</span>
-              </div>
-            </div>
+                    <!-- Tap To Expand Hover Overlay -->
+                    <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                      <span class="px-4 py-2 bg-white text-[#001744] text-[11px] uppercase font-bold tracking-widest rounded-none shadow-md flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        Play Fullscreen
+                      </span>
+                    </div>
 
-            <!-- Card 7: Heritage Suite (Interior 005) - FEKVŐ (4:3) - Category Exclusive -->
-            <div data-gallery-cat="hotels" class="gallery-item space-y-3 group cursor-pointer hidden" onclick="openLightbox('boutique-suite')">
-              <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                <img
-                  src="./portfolio/public/interior-photo-005.jpg"
-                  alt="Heritage Suite Architecture - Interior Photo 5"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  referrerpolicy="no-referrer"
-                  onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-005.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-005.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
-                />
-                <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                  <div class="font-serif text-xl">Heritage Suite Architecture</div>
+                    <!-- Bottom Indicator -->
+                    <div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/50 rounded-full z-20 pointer-events-none"></div>
+                  </div>
                 </div>
-                <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                    View Fullscreen
-                  </span>
-                </div>
-              </div>
-              <div class="flex justify-between items-baseline">
-                <h4 class="text-xl font-serif text-[#001744] font-semibold">Heritage Suite Architecture</h4>
-                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Boutique Hotel (Brussels)</span>
-              </div>
-            </div>
 
-            <!-- Card 8: Classical Detail (Architecture 003) - FEKVŐ (4:3) - Category Exclusive -->
-            <div data-gallery-cat="hotels" class="gallery-item space-y-3 group cursor-pointer hidden" onclick="openLightbox('architecture-facade-003')">
-              <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                <img
-                  src="./portfolio/public/architetcture-photo-003.jpg"
-                  alt="Classical Architectural Detail - Architecture 003"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  referrerpolicy="no-referrer"
-                  onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/architecture-photo-003.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/architecture-photo-003.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
-                />
-                <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                  <div class="font-serif text-xl">Classical Architectural Detail</div>
-                </div>
-                <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                    View Fullscreen
-                  </span>
+                <!-- Video Description Below Frame -->
+                <div class="text-center space-y-1">
+                  <h4 class="text-lg font-serif text-[#001744] font-semibold">Cinematic Atmosphere Reel</h4>
+                  <div class="text-xs font-mono text-[#cc0c2f] font-semibold">Bars &amp; Hospitality · 9:16 Vertical</div>
+                  <p class="text-[12px] text-neutral-600 font-sans">Sony FX6 · 4K 60fps · Ambient Soundscape</p>
                 </div>
               </div>
-              <div class="flex justify-between items-baseline">
-                <h4 class="text-xl font-serif text-[#001744] font-semibold">Classical Architectural Detail</h4>
-                <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Heritage Architecture (Vienna)</span>
+
+              <!-- Video Frame 2: video-003.mov (Gastronomy & Mixology) -->
+              <div class="flex flex-col items-center space-y-4">
+                <!-- Smartphone Device Frame with Bezel and Shadows -->
+                <div 
+                  class="relative w-full max-w-[270px] sm:max-w-[290px] p-3 sm:p-3.5 bg-gradient-to-b from-[#1c2738] via-[#000c24] to-[#001744] rounded-[44px] border-2 border-neutral-600/70 shadow-2xl shadow-[#001744]/25 ring-1 ring-white/10 group cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-[#cc0c2f]/20"
+                  onclick="openLightbox('video-003')"
+                >
+                  <!-- Phone Top Speaker Pill / Island -->
+                  <div class="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-black/90 rounded-full z-20 flex items-center justify-center gap-1.5 pointer-events-none border border-neutral-800">
+                    <span class="w-2 h-2 rounded-full bg-neutral-900 border border-neutral-700"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#cc0c2f]/70"></span>
+                  </div>
+
+                  <!-- 9:16 Screen Container -->
+                  <div class="aspect-[9/16] w-full rounded-[32px] overflow-hidden relative bg-black">
+                    <video
+                      src="./portfolio/public/video-003.mov"
+                      autoplay
+                      loop
+                      muted
+                      playsinline
+                      preload="auto"
+                      class="w-full h-full object-cover"
+                      onerror="this.classList.add('opacity-0'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+                    >
+                      <source src="./portfolio/public/video-003.mov" type="video/quicktime" />
+                      <source src="./portfolio/public/video-003.mp4" type="video/mp4" />
+                      <source src="./public/portfolio/public/video-003.mov" type="video/quicktime" />
+                      <source src="/portfolio/public/video-003.mov" type="video/quicktime" />
+                      <source src="/portfolio/public/video-003.mp4" type="video/mp4" />
+                      <source src="./video-003.mov" type="video/quicktime" />
+                      <source src="./video-003.mp4" type="video/mp4" />
+                    </video>
+
+                    <!-- Elegant Fallback State -->
+                    <div class="hidden absolute inset-0 w-full h-full bg-[#000c24] flex flex-col items-center justify-center p-6 text-center">
+                      <div class="w-12 h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center mb-3">
+                        <svg class="w-5 h-5 text-[#cc0c2f]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                      </div>
+                      <span class="text-xs uppercase tracking-widest font-mono text-white/90">video-003.mov</span>
+                      <span class="text-[11px] text-neutral-400 font-sans mt-1">Artisan Culinary &amp; Mixology</span>
+                    </div>
+
+                    <!-- Top 9:16 Tag -->
+                    <div class="absolute top-8 left-3 z-10 flex items-center gap-1.5 bg-[#001744]/80 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase text-white border border-white/20">
+                      <span class="w-1.5 h-1.5 bg-[#cc0c2f] rounded-full animate-pulse"></span>
+                      <span>9:16 Reel</span>
+                    </div>
+
+                    <!-- Tap To Expand Hover Overlay -->
+                    <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                      <span class="px-4 py-2 bg-white text-[#001744] text-[11px] uppercase font-bold tracking-widest rounded-none shadow-md flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        Play Fullscreen
+                      </span>
+                    </div>
+
+                    <!-- Bottom Indicator -->
+                    <div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/50 rounded-full z-20 pointer-events-none"></div>
+                  </div>
+                </div>
+
+                <!-- Video Description Below Frame -->
+                <div class="text-center space-y-1">
+                  <h4 class="text-lg font-serif text-[#001744] font-semibold">Artisan Culinary Experience</h4>
+                  <div class="text-xs font-mono text-[#cc0c2f] font-semibold">Gastronomy · 9:16 Vertical</div>
+                  <p class="text-[12px] text-neutral-600 font-sans">Slow-Motion Plating · Studio Grade</p>
+                </div>
               </div>
+
             </div>
+          </div>
+
+          <!-- STILL PHOTOGRAPHY ARCHIVE (Curated High-Res Media Cards) -->
+          <div class="space-y-4 pt-2">
+            <div class="text-xs uppercase tracking-[0.2em] text-[#001744] font-bold flex items-center gap-2">
+              <span class="w-2 h-2 bg-[#001744]"></span>
+              <span>Curated Still Photography Archive</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start" id="galleryGrid">
+
+              <!-- Card 1: Stately Heritage Residence (Interior 004) - ÁLLÓ (4:5) - Featured -->
+              <div data-gallery-cat="hotels" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('grand-salon-004')">
+                <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+                  <img
+                    src="./portfolio/public/interior-photo-004.jpg"
+                    alt="Stately Heritage Residence - Interior Photo 004"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-004.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-004.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+                  />
+                  <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
+                    <div class="font-serif text-xl">Stately Heritage Residence</div>
+                  </div>
+                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
+                      View Fullscreen
+                    </span>
+                  </div>
+                </div>
+                <div class="flex justify-between items-baseline">
+                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Stately Heritage Residence</h4>
+                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Suites &amp; Grand Living (Ghent)</span>
+                </div>
+              </div>
+
+              <!-- Card 2: Signature Gastronomy (Food 001) - ÁLLÓ (4:5) - Featured -->
+              <div data-gallery-cat="gastronomy" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('artisan-table-setting')">
+                <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+                  <img
+                    src="./portfolio/public/food-photo-001.jpg"
+                    alt="Signature Gastronomy Staging - Food Photo 001"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/food-photo-001.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/food-photo-001.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+                  />
+                  <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
+                    <div class="font-serif text-xl">Signature Gastronomy Atmosphere</div>
+                  </div>
+                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
+                      View Fullscreen
+                    </span>
+                  </div>
+                </div>
+                <div class="flex justify-between items-baseline">
+                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Signature Gastronomy Staging</h4>
+                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Fine Dining &amp; Plating (Budapest)</span>
+                </div>
+              </div>
+
+              <!-- Card 3: Heritage Suite Architecture (Interior 005) - FEKVŐ (4:3) - Featured -->
+              <div data-gallery-cat="hotels" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('boutique-suite')">
+                <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+                  <img
+                    src="./portfolio/public/interior-photo-005.jpg"
+                    alt="Heritage Suite Architecture - Interior Photo 5"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-005.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-005.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+                  />
+                  <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
+                    <div class="font-serif text-xl">Heritage Suite Architecture</div>
+                  </div>
+                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
+                      View Fullscreen
+                    </span>
+                  </div>
+                </div>
+                <div class="flex justify-between items-baseline">
+                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Heritage Suite Architecture</h4>
+                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Boutique Hotel (Brussels)</span>
+                </div>
+              </div>
+
+              <!-- Card 4: Luxury Boutique Residence (Interior 003) - FEKVŐ (4:3) - Featured -->
+              <div data-gallery-cat="hotels" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('grand-suite-interior')">
+                <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+                  <img
+                    src="./portfolio/public/interior-photo-003.jpg"
+                    alt="Luxury Boutique Residence - Interior 003"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-003.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-003.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+                  />
+                  <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
+                    <div class="font-serif text-xl">Luxury Boutique Residence</div>
+                  </div>
+                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
+                      View Fullscreen
+                    </span>
+                  </div>
+                </div>
+                <div class="flex justify-between items-baseline">
+                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Luxury Boutique Residence</h4>
+                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Suites &amp; Living (Ghent)</span>
+                </div>
+              </div>
+
+              <!-- Card 5: Classical Architectural Detail (Architecture 003) - FEKVŐ (4:3) - Featured -->
+              <div data-gallery-cat="bars" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('architecture-facade-003')">
+                <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+                  <img
+                    src="./portfolio/public/architetcture-photo-003.jpg"
+                    alt="Classical Architectural Detail - Architecture 003"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/architecture-photo-003.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/architecture-photo-003.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+                  />
+                  <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
+                    <div class="font-serif text-xl">Classical Architectural Detail</div>
+                  </div>
+                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
+                      View Fullscreen
+                    </span>
+                  </div>
+                </div>
+                <div class="flex justify-between items-baseline">
+                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Classical Architectural Detail</h4>
+                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Heritage Architecture (Vienna)</span>
+                </div>
+              </div>
+
+              <!-- Card 6: Rooftop Cocktail Lounge (Interior 002) - FEKVŐ (4:3) - Featured -->
+              <div data-gallery-cat="bars" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('penthouse-terrace')">
+                <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+                  <img
+                    src="./portfolio/public/interior-photo-002.jpg"
+                    alt="Atmosphere & Spaces - Interior Photo 2"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-002.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/Interior-photo-002.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+                  />
+                  <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
+                    <div class="font-serif text-xl">Rooftop Cocktail Lounge</div>
+                  </div>
+                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
+                      View Fullscreen
+                    </span>
+                  </div>
+                </div>
+                <div class="flex justify-between items-baseline">
+                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Rooftop Cocktail Lounge</h4>
+                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Twilight Terrace (Budapest)</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
 
           </div>
 
@@ -867,7 +1023,7 @@
 
       <!-- DIRECT CONTACT FORM & CLICK-TO-CALL (Tommy Retail Inquiry Suite) -->
       <section id="contact" class="py-20 border-b border-neutral-200 bg-white fade-in-section">
-        <div class="max-w-4xl mx-auto px-6">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
           
           <div class="text-center space-y-4 mb-10">
             <div class="text-xs uppercase tracking-[0.25em] text-[#cc0c2f] font-bold">Direct Booking &amp; Inquiry</div>
@@ -1002,8 +1158,8 @@
     </main>
 
     <!-- MODERN HIGH-END B2B FOOTER -->
-    <footer class="bg-[#00122e] text-white font-sans border-t border-[#000c24]">
-      <div class="max-w-6xl mx-auto px-6 sm:px-8 py-12 sm:py-16">
+    <footer class="bg-[#00122e] text-white font-sans border-t border-[#000c24] pb-24 md:pb-0">
+      <div class="max-w-6xl mx-auto px-4 sm:px-8 py-12 sm:py-16">
         
         <!-- Main Footer Grid (3 Columns on Desktop, Stacked on Mobile) -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-start">
@@ -1142,7 +1298,7 @@
     </aside>
 
     <!-- FULLSCREEN LIGHTBOX MODAL (Tommy High-Contrast Minimalist Viewer) -->
-    <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-[#000c24]/98 backdrop-blur-md flex flex-col justify-between p-3.5 sm:p-8 overflow-y-auto">
+    <div id="lightboxModal" class="fixed inset-0 z-[60] hidden bg-[#000c24]/98 backdrop-blur-md flex flex-col justify-between p-3.5 sm:p-8 overflow-y-auto">
       
       <div class="flex items-center justify-between text-white border-b border-neutral-800 pb-3 sm:pb-4 shrink-0">
         <div class="pr-2">
@@ -1311,12 +1467,28 @@
           desc: "Architectural interior staging capturing rich textures, warm ambient light, and spacious luxury hotel styling in Ghent.",
           image: "/portfolio/public/interior-photo-003.jpg"
         },
+        'video-002': {
+          title: "Cinematic Atmosphere Reel",
+          category: "Bars & Terraces",
+          specs: "Sony FX6 · 35mm Prime · 4K / 60fps · Cinematic Grade",
+          desc: "Dynamic hospitality motion video showcasing vibrant venue ambiance and guest experience in 9:16 vertical format.",
+          aspect: "9:16",
+          video: "./portfolio/public/video-002.mov"
+        },
+        'video-003': {
+          title: "Artisan Culinary Experience",
+          category: "Gastronomy",
+          specs: "50mm Macro · 4K / 60fps · Slow-Motion Culinary Capture",
+          desc: "Sensory gastronomy and mixology video highlighting fine dining presentation and texture in motion in 9:16 vertical format.",
+          aspect: "9:16",
+          video: "./portfolio/public/video-003.mov"
+        },
         'heritage-facade': {
-          title: "Grand Architectural Heritage",
-          category: "Boutique Hotels",
-          specs: "24mm Tilt-Shift · f/5.6 · Golden Hour Elevation",
-          desc: "Dramatic architectural elevation and facade capture emphasizing stately classical design and hospitality prestige in Vienna.",
-          image: "/portfolio/public/architecture-photo-001.jpg"
+          title: "Cinematic Atmosphere Reel",
+          category: "Bars & Terraces",
+          specs: "Sony FX6 · 35mm Prime · 4K / 60fps · Cinematic Grade",
+          desc: "Dynamic hospitality motion video showcasing vibrant venue ambiance and guest experience.",
+          video: "./portfolio/public/video-002.mov"
         },
         'artisan-table-setting': {
           title: "Signature Gastronomy Atmosphere",
@@ -1333,11 +1505,11 @@
           image: "/architetcture-photo-003.jpg"
         },
         'food-styling-003': {
-          title: "Artisan Culinary Staging",
-          category: "Food & Gastronomy",
-          specs: "85mm Macro · f/2.4 · 1/200s · Natural Daylight & Soft Diffuser",
-          desc: "Sensory gastronomy staging capturing fine culinary plating, authentic ingredients, and premium dining atmosphere.",
-          image: "/food-photo-003.jpg"
+          title: "Artisan Culinary Experience",
+          category: "Gastronomy",
+          specs: "50mm Macro · 4K / 60fps · Slow-Motion Culinary Capture",
+          desc: "Sensory gastronomy and mixology video highlighting fine dining presentation and texture in motion.",
+          video: "./portfolio/public/video-003.mov"
         }
       };
 
@@ -1362,8 +1534,9 @@
 
         const container = document.getElementById('lbVisualContainer');
         if (item.video) {
+          const isVertical = item.aspect === '9:16' || key.includes('video');
           container.innerHTML = `
-            <div class="w-full h-full relative flex items-center justify-center">
+            <div class="w-full h-full relative flex items-center justify-center p-2">
               <video
                 src="${item.video}"
                 poster="${item.image || ''}"
@@ -1372,9 +1545,15 @@
                 muted
                 playsinline
                 controls
-                class="w-full h-full object-contain max-h-[70vh] rounded-none shadow-2xl"
+                class="${isVertical ? 'aspect-[9/16] max-h-[78vh] w-auto' : 'max-h-[70vh] w-full'} object-contain rounded-2xl shadow-2xl bg-black border border-white/15"
               >
+                <source src="${item.video}" type="video/quicktime" />
                 <source src="${item.video}" type="video/mp4" />
+                <source src="./public/portfolio/public/${key}.mov" type="video/quicktime" />
+                <source src="/portfolio/public/${key}.mov" type="video/quicktime" />
+                <source src="./portfolio/public/${key}.mov" type="video/quicktime" />
+                <source src="${item.video.replace('./portfolio/public', '')}" type="video/quicktime" />
+                <source src="${item.video.replace('./portfolio/public', '')}" type="video/mp4" />
               </video>
             </div>
           `;
@@ -1456,23 +1635,21 @@
         }, { passive: true });
       }
 
-      // 6. Hero Showcase Video Autoplay & Reliability
-      const heroVid = document.getElementById('heroShowcaseVideo');
-      if (heroVid) {
-        heroVid.muted = true;
-        heroVid.defaultMuted = true;
-        heroVid.playsInline = true;
-        const startVideo = () => {
-          if (heroVid.paused) {
-            heroVid.play().catch(() => {});
+      // 6. Hero & 9:16 Showcase Reels Autoplay Reliability
+      const setupAllVideos = () => {
+        document.querySelectorAll('video[autoplay]').forEach((v) => {
+          v.muted = true;
+          v.defaultMuted = true;
+          v.playsInline = true;
+          if (v.paused) {
+            v.play().catch(() => {});
           }
-        };
-        startVideo();
-        heroVid.addEventListener('loadeddata', startVideo, { once: true });
-        heroVid.addEventListener('canplay', startVideo, { once: true });
-        document.addEventListener('touchstart', startVideo, { once: true });
-        document.addEventListener('click', startVideo, { once: true });
-      }
+        });
+      };
+      setupAllVideos();
+      document.addEventListener('DOMContentLoaded', setupAllVideos);
+      document.addEventListener('touchstart', setupAllVideos, { once: true });
+      document.addEventListener('click', setupAllVideos, { once: true });
 
       // 7. Subtle Viewport Fade-In Intersection Observer for Landing Page Sections
       const initFadeInObserver = () => {
