@@ -535,16 +535,17 @@
             
             <!-- Left Column: Editorial Portrait in Tommy Architectural Frame -->
             <div class="lg:col-span-5 flex justify-center">
-              <div class="relative w-full max-w-md p-3 sm:p-4 bg-white shadow-xl rounded-none border border-neutral-300 photo-frame group">
+              <div class="relative w-full max-w-md p-3 sm:p-4 bg-white shadow-xl rounded-none border border-neutral-300 photo-frame group cursor-pointer" onclick="openLightbox('about-portrait')">
                 <div class="aspect-[4/5] w-full rounded-none overflow-hidden relative bg-[#000c24]">
                   
-                  <!-- Primary Photographer Portrait Image -->
+                  <!-- Primary Photographer Portrait Image (photo_of_myself.jpg) -->
                   <img
-                    src="/portfolio/public/assets/Levente_Sinka_Portrait.jpg"
+                    src="./portfolio/public/photo_of_myself.jpg"
                     alt="Levente Sinka — Hospitality Visual Director"
                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
-                    onerror="this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/photo_of_myself.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='./photo_of_myself.jpg'; } else if(this.dataset.tried==='2'){ this.dataset.tried='3'; this.src='/photo_of_myself.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
                   />
 
                   <!-- Elegant Artistic Vector Fallback (Zero-broken policy) -->
@@ -722,13 +723,7 @@
                       <svg class="w-5 h-5 text-[#cc0c2f]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <span class="text-xs uppercase tracking-widest font-mono text-white/90">video-002.mov</span>
-                    <span class="text-[11px] text-neutral-400 font-sans mt-1">Cinematic Atmosphere Reel</span>
-                  </div>
-
-                  <!-- Top 9:16 Tag -->
-                  <div class="absolute top-8 left-3 z-10 flex items-center gap-1.5 bg-[#000c24]/85 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase text-white border border-white/20">
-                    <span class="w-1.5 h-1.5 bg-[#cc0c2f] rounded-full animate-pulse"></span>
-                    <span>9:16 Reel</span>
+                    <span class="text-[11px] text-neutral-400 font-sans mt-1">Summer Terrace Campaign</span>
                   </div>
 
                   <!-- Hover Play Overlay -->
@@ -744,11 +739,13 @@
                 </div>
               </div>
 
-              <!-- Video Description -->
-              <div class="text-center space-y-1">
-                <h3 class="text-lg font-serif text-white font-semibold">Cinematic Atmosphere Reel</h3>
-                <div class="text-xs font-mono text-[#cc0c2f] font-semibold">Bars &amp; Hospitality · 9:16 Vertical</div>
-                <p class="text-[12px] text-neutral-400 font-sans">Sony FX6 · 4K 60fps · Ambient Soundscape</p>
+              <!-- Video Details -->
+              <div class="text-center space-y-1 max-w-[280px]">
+                <h3 class="text-lg font-serif text-white font-semibold">Summer Terrace Campaign</h3>
+                <div class="text-xs font-mono text-[#cc0c2f] font-semibold">Social Media Reel</div>
+                <p class="text-[12px] text-neutral-300 font-sans leading-relaxed">
+                  Showcasing the venue vibe and driving seasonal cocktail sales.
+                </p>
               </div>
             </div>
 
@@ -791,13 +788,7 @@
                       <svg class="w-5 h-5 text-[#cc0c2f]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <span class="text-xs uppercase tracking-widest font-mono text-white/90">video-003.mov</span>
-                    <span class="text-[11px] text-neutral-400 font-sans mt-1">Artisan Culinary &amp; Mixology</span>
-                  </div>
-
-                  <!-- Top 9:16 Tag -->
-                  <div class="absolute top-8 left-3 z-10 flex items-center gap-1.5 bg-[#000c24]/85 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase text-white border border-white/20">
-                    <span class="w-1.5 h-1.5 bg-[#cc0c2f] rounded-full animate-pulse"></span>
-                    <span>9:16 Reel</span>
+                    <span class="text-[11px] text-neutral-400 font-sans mt-1">Seasonal Menu Launch</span>
                   </div>
 
                   <!-- Hover Play Overlay -->
@@ -813,25 +804,16 @@
                 </div>
               </div>
 
-              <!-- Video Description -->
-              <div class="text-center space-y-1">
-                <h3 class="text-lg font-serif text-white font-semibold">Artisan Culinary Experience</h3>
-                <div class="text-xs font-mono text-[#cc0c2f] font-semibold">Gastronomy · 9:16 Vertical</div>
-                <p class="text-[12px] text-neutral-400 font-sans">Slow-Motion Plating · Studio Grade</p>
+              <!-- Video Details -->
+              <div class="text-center space-y-1 max-w-[280px]">
+                <h3 class="text-lg font-serif text-white font-semibold">Seasonal Menu Launch</h3>
+                <div class="text-xs font-mono text-[#cc0c2f] font-semibold">Vertical Video Campaign</div>
+                <p class="text-[12px] text-neutral-300 font-sans leading-relaxed">
+                  Highlighting culinary craftsmanship to attract premium bookings.
+                </p>
               </div>
             </div>
 
-          </div>
-
-          <!-- Bottom Direct CTA -->
-          <div class="text-center pt-2">
-            <a
-              href="#contact"
-              class="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-xs font-bold tracking-widest uppercase text-[#001744] bg-white hover:bg-[#cc0c2f] hover:text-white transition-colors rounded-none shadow-lg"
-            >
-              <span>Book a Reel Shoot for Your Venue</span>
-              <span>→</span>
-            </a>
           </div>
 
         </div>
@@ -1131,7 +1113,7 @@
                   name="name_or_brand"
                   type="text"
                   required
-                  placeholder="e.g. Sándor Kiss / Turner's Cafe &amp; Bar"
+                  placeholder="e.g. Alexander Vance / The Grand Heritage Hotel"
                   class="w-full px-4 py-3 bg-white border border-neutral-300 focus:border-[#001744] focus:ring-1 focus:ring-[#001744] focus:outline-none text-base sm:text-sm text-[#001744] rounded-none transition-colors"
                 />
               </div>
@@ -1451,20 +1433,28 @@
           video: "./portfolio/public/video-001.mp4"
         },
         'video-002': {
-          title: "Cinematic Atmosphere Reel",
-          category: "Bars & Terraces",
-          specs: "Sony FX6 · 35mm Prime · 4K / 60fps · Cinematic Grade",
-          desc: "Dynamic hospitality motion video showcasing vibrant venue ambiance and guest experience in 9:16 vertical format.",
+          title: "Summer Terrace Campaign",
+          category: "Social Media Reel",
+          specs: "Summer Terrace Campaign · Social Media Reel",
+          desc: "Showcasing the venue vibe and driving seasonal cocktail sales.",
           aspect: "9:16",
           video: "./portfolio/public/video-002.mov"
         },
         'video-003': {
-          title: "Artisan Culinary Experience",
-          category: "Gastronomy",
-          specs: "50mm Macro · 4K / 60fps · Slow-Motion Culinary Capture",
-          desc: "Sensory gastronomy and mixology video highlighting fine dining presentation and texture in motion in 9:16 vertical format.",
+          title: "Seasonal Menu Launch",
+          category: "Vertical Video Campaign",
+          specs: "Seasonal Menu Launch · Vertical Video Campaign",
+          desc: "Highlighting culinary craftsmanship to attract premium bookings.",
           aspect: "9:16",
           video: "./portfolio/public/video-003.mov"
+        },
+        'about-portrait': {
+          title: "Levente Sinka — Hospitality Visual Director",
+          category: "Visual Director & Cinematographer",
+          specs: "Editorial Portrait · Ghent · Krems · Budapest",
+          desc: "Hospitality visual production director specializing in boutique hotel spaces, culinary arts, and sensory cinema.",
+          aspect: "4:5",
+          image: "./portfolio/public/photo_of_myself.jpg"
         },
         'grand-salon-004': {
           title: "Stately Heritage Residence",
@@ -1576,10 +1566,6 @@
               <source src="${item.video.replace('./portfolio/public', '')}" type="video/quicktime" />
               <source src="${item.video.replace('./portfolio/public', '')}" type="video/mp4" />
             </video>
-            <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase text-white border border-white/20 pointer-events-none">
-              <span class="w-1.5 h-1.5 bg-[#cc0c2f] rounded-full animate-pulse"></span>
-              <span>9:16 Reel</span>
-            </div>
           `;
         } else if (item.aspect === '4:5' || key === 'grand-salon-004' || key === 'artisan-table-setting' || key === 'turners-seating' || key === 'turners-coffee' || key === 'turners-interior') {
           // Dedicated Portrait Photo Container (4:5)
