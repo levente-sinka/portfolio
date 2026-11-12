@@ -196,6 +196,7 @@
         <nav class="hidden md:flex items-center gap-7 lg:gap-8 text-xs tracking-[0.18em] uppercase font-semibold text-neutral-800">
           <a href="#recent-projects" class="hover:text-[#001744] hover:underline underline-offset-8 decoration-2 decoration-[#cc0c2f] transition-all whitespace-nowrap">Recent Projects</a>
           <a href="#about" class="hover:text-[#001744] hover:underline underline-offset-8 decoration-2 decoration-[#cc0c2f] transition-all whitespace-nowrap">About</a>
+          <a href="#reels" class="hover:text-[#001744] hover:underline underline-offset-8 decoration-2 decoration-[#cc0c2f] transition-all whitespace-nowrap">Reels &amp; Video</a>
           <a href="#portfolio" class="hover:text-[#001744] hover:underline underline-offset-8 decoration-2 decoration-[#cc0c2f] transition-all whitespace-nowrap">Hospitality Archive</a>
           <a href="#contact" class="hover:text-[#001744] hover:underline underline-offset-8 decoration-2 decoration-[#cc0c2f] transition-all whitespace-nowrap">Inquiry &amp; Contact</a>
         </nav>
@@ -237,6 +238,7 @@
       <div id="mobileNavMenu" class="hidden md:hidden border-t border-neutral-200 bg-white px-5 py-5 space-y-3.5 text-xs uppercase tracking-wider text-[#001744] font-semibold shadow-xl">
         <a href="#recent-projects" class="mobile-nav-link block py-2 px-1 hover:text-[#cc0c2f] border-b border-neutral-100">Recent Projects</a>
         <a href="#about" class="mobile-nav-link block py-2 px-1 hover:text-[#cc0c2f] border-b border-neutral-100">About</a>
+        <a href="#reels" class="mobile-nav-link block py-2 px-1 hover:text-[#cc0c2f] border-b border-neutral-100">Reels &amp; Video</a>
         <a href="#portfolio" class="mobile-nav-link block py-2 px-1 hover:text-[#cc0c2f] border-b border-neutral-100">Hospitality Archive</a>
         <a href="#contact" class="mobile-nav-link block py-2 px-1 hover:text-[#cc0c2f]">Inquiry &amp; Contact</a>
         <div class="pt-3 border-t border-neutral-200 space-y-2.5">
@@ -654,13 +656,194 @@
         </div>
       </section>
 
-      <!-- HOSPITALITY ARCHIVE (Categorized Showcase in Tommy Retail Grid) -->
+      <!-- EXCLUSIVE 9:16 VERTICAL REELS & SHORT-FORM VIDEO (Dedicated Independent Section) -->
+      <section id="reels" class="py-20 sm:py-28 bg-[#000c24] text-white border-b border-[#001744] fade-in-section relative overflow-hidden">
+        <!-- Subtle Atmospheric Ambient Glow -->
+        <div class="absolute -top-32 -right-32 w-96 h-96 bg-[#001744] rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+        <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-[#cc0c2f] rounded-full blur-3xl opacity-15 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 space-y-12 sm:space-y-16">
+          
+          <!-- Section Heading -->
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-neutral-800 pb-8">
+            <div class="space-y-3">
+              <div class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#cc0c2f] font-bold">
+                <span class="w-2 h-2 bg-[#cc0c2f] rounded-full animate-ping"></span>
+                <span>Short-Form Video Production</span>
+              </div>
+              <h2 class="text-3xl sm:text-5xl font-serif text-white font-normal">
+                Vertical Reels &amp; Spatial Motion
+              </h2>
+            </div>
+            <p class="text-xs sm:text-sm font-mono text-neutral-400 max-w-md leading-relaxed">
+              Dynamic 9:16 vertical video mastered for Instagram Reels, TikTok, and direct mobile bookings. High-retention cinematic rhythm.
+            </p>
+          </div>
+
+          <!-- Two 9:16 Video Smartphone Frames Side-by-Side -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 max-w-3xl mx-auto py-2">
+            
+            <!-- Video 1: video-002.mov in Sleek Smartphone Frame -->
+            <div class="flex flex-col items-center space-y-5">
+              <div 
+                class="relative w-full max-w-[270px] sm:max-w-[290px] p-3 sm:p-3.5 bg-gradient-to-b from-[#1c2738] via-[#000c24] to-[#001744] rounded-[44px] border-2 border-neutral-600/70 shadow-2xl shadow-black/80 ring-1 ring-white/10 group cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-[#cc0c2f]/25"
+                onclick="openLightbox('video-002')"
+              >
+                <!-- Phone Top Speaker Pill / Island -->
+                <div class="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-black/90 rounded-full z-20 flex items-center justify-center gap-1.5 pointer-events-none border border-neutral-800">
+                  <span class="w-2 h-2 rounded-full bg-neutral-900 border border-neutral-700"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#cc0c2f]/70"></span>
+                </div>
+
+                <!-- 9:16 Screen Viewport -->
+                <div class="aspect-[9/16] w-full rounded-[32px] overflow-hidden relative bg-black">
+                  <video
+                    src="./portfolio/public/video-002.mov"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    preload="auto"
+                    class="w-full h-full object-cover"
+                    onerror="this.classList.add('opacity-0'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+                  >
+                    <source src="./portfolio/public/video-002.mov" type="video/quicktime" />
+                    <source src="./portfolio/public/video-002.mp4" type="video/mp4" />
+                    <source src="./public/portfolio/public/video-002.mov" type="video/quicktime" />
+                    <source src="/portfolio/public/video-002.mov" type="video/quicktime" />
+                    <source src="/portfolio/public/video-002.mp4" type="video/mp4" />
+                    <source src="./video-002.mov" type="video/quicktime" />
+                    <source src="./video-002.mp4" type="video/mp4" />
+                  </video>
+
+                  <!-- Fallback State -->
+                  <div class="hidden absolute inset-0 w-full h-full bg-[#000c24] flex flex-col items-center justify-center p-6 text-center">
+                    <div class="w-12 h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center mb-3">
+                      <svg class="w-5 h-5 text-[#cc0c2f]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="text-xs uppercase tracking-widest font-mono text-white/90">video-002.mov</span>
+                    <span class="text-[11px] text-neutral-400 font-sans mt-1">Cinematic Atmosphere Reel</span>
+                  </div>
+
+                  <!-- Top 9:16 Tag -->
+                  <div class="absolute top-8 left-3 z-10 flex items-center gap-1.5 bg-[#000c24]/85 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase text-white border border-white/20">
+                    <span class="w-1.5 h-1.5 bg-[#cc0c2f] rounded-full animate-pulse"></span>
+                    <span>9:16 Reel</span>
+                  </div>
+
+                  <!-- Hover Play Overlay -->
+                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                    <span class="px-4 py-2 bg-white text-[#001744] text-[11px] uppercase font-bold tracking-widest rounded-none shadow-md flex items-center gap-1.5">
+                      <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                      Play Fullscreen
+                    </span>
+                  </div>
+
+                  <!-- Bottom Home Indicator -->
+                  <div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/50 rounded-full z-20 pointer-events-none"></div>
+                </div>
+              </div>
+
+              <!-- Video Description -->
+              <div class="text-center space-y-1">
+                <h3 class="text-lg font-serif text-white font-semibold">Cinematic Atmosphere Reel</h3>
+                <div class="text-xs font-mono text-[#cc0c2f] font-semibold">Bars &amp; Hospitality · 9:16 Vertical</div>
+                <p class="text-[12px] text-neutral-400 font-sans">Sony FX6 · 4K 60fps · Ambient Soundscape</p>
+              </div>
+            </div>
+
+            <!-- Video 2: video-003.mov in Sleek Smartphone Frame -->
+            <div class="flex flex-col items-center space-y-5">
+              <div 
+                class="relative w-full max-w-[270px] sm:max-w-[290px] p-3 sm:p-3.5 bg-gradient-to-b from-[#1c2738] via-[#000c24] to-[#001744] rounded-[44px] border-2 border-neutral-600/70 shadow-2xl shadow-black/80 ring-1 ring-white/10 group cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-[#cc0c2f]/25"
+                onclick="openLightbox('video-003')"
+              >
+                <!-- Phone Top Speaker Pill / Island -->
+                <div class="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-black/90 rounded-full z-20 flex items-center justify-center gap-1.5 pointer-events-none border border-neutral-800">
+                  <span class="w-2 h-2 rounded-full bg-neutral-900 border border-neutral-700"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#cc0c2f]/70"></span>
+                </div>
+
+                <!-- 9:16 Screen Viewport -->
+                <div class="aspect-[9/16] w-full rounded-[32px] overflow-hidden relative bg-black">
+                  <video
+                    src="./portfolio/public/video-003.mov"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    preload="auto"
+                    class="w-full h-full object-cover"
+                    onerror="this.classList.add('opacity-0'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
+                  >
+                    <source src="./portfolio/public/video-003.mov" type="video/quicktime" />
+                    <source src="./portfolio/public/video-003.mp4" type="video/mp4" />
+                    <source src="./public/portfolio/public/video-003.mov" type="video/quicktime" />
+                    <source src="/portfolio/public/video-003.mov" type="video/quicktime" />
+                    <source src="/portfolio/public/video-003.mp4" type="video/mp4" />
+                    <source src="./video-003.mov" type="video/quicktime" />
+                    <source src="./video-003.mp4" type="video/mp4" />
+                  </video>
+
+                  <!-- Fallback State -->
+                  <div class="hidden absolute inset-0 w-full h-full bg-[#000c24] flex flex-col items-center justify-center p-6 text-center">
+                    <div class="w-12 h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center mb-3">
+                      <svg class="w-5 h-5 text-[#cc0c2f]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="text-xs uppercase tracking-widest font-mono text-white/90">video-003.mov</span>
+                    <span class="text-[11px] text-neutral-400 font-sans mt-1">Artisan Culinary &amp; Mixology</span>
+                  </div>
+
+                  <!-- Top 9:16 Tag -->
+                  <div class="absolute top-8 left-3 z-10 flex items-center gap-1.5 bg-[#000c24]/85 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase text-white border border-white/20">
+                    <span class="w-1.5 h-1.5 bg-[#cc0c2f] rounded-full animate-pulse"></span>
+                    <span>9:16 Reel</span>
+                  </div>
+
+                  <!-- Hover Play Overlay -->
+                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                    <span class="px-4 py-2 bg-white text-[#001744] text-[11px] uppercase font-bold tracking-widest rounded-none shadow-md flex items-center gap-1.5">
+                      <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                      Play Fullscreen
+                    </span>
+                  </div>
+
+                  <!-- Bottom Home Indicator -->
+                  <div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/50 rounded-full z-20 pointer-events-none"></div>
+                </div>
+              </div>
+
+              <!-- Video Description -->
+              <div class="text-center space-y-1">
+                <h3 class="text-lg font-serif text-white font-semibold">Artisan Culinary Experience</h3>
+                <div class="text-xs font-mono text-[#cc0c2f] font-semibold">Gastronomy · 9:16 Vertical</div>
+                <p class="text-[12px] text-neutral-400 font-sans">Slow-Motion Plating · Studio Grade</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Direct CTA -->
+          <div class="text-center pt-2">
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-xs font-bold tracking-widest uppercase text-[#001744] bg-white hover:bg-[#cc0c2f] hover:text-white transition-colors rounded-none shadow-lg"
+            >
+              <span>Book a Reel Shoot for Your Venue</span>
+              <span>→</span>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- HOSPITALITY ARCHIVE (Categorized Photography — Unmixed Portrait & Landscape Galleries) -->
       <section id="portfolio" class="py-20 border-b border-neutral-200 bg-white fade-in-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-10 sm:space-y-12">
           
           <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div class="space-y-3">
-              <div class="text-xs uppercase tracking-[0.25em] text-[#cc0c2f] font-bold">Hospitality Archive</div>
+              <div class="text-xs uppercase tracking-[0.25em] text-[#cc0c2f] font-bold">Hospitality Photography Archive</div>
               <h2 class="text-3xl sm:text-5xl font-serif text-[#001744] font-normal">
                 Boutique Hotels, Gastronomy &amp; Lounges
               </h2>
@@ -685,179 +868,17 @@
             </div>
           </div>
 
-          <!-- EXCLUSIVE 9:16 VERTICAL VIDEO REELS SHOWCASE (Separated from Photos with Bespoke Device Frames) -->
-          <div class="p-6 sm:p-10 bg-[#f8f9fa] border border-neutral-200 rounded-none space-y-6 sm:space-y-8">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-neutral-300 pb-5">
-              <div class="space-y-1.5">
-                <div class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#cc0c2f] font-bold">
-                  <span class="w-2 h-2 bg-[#cc0c2f] rounded-full animate-ping"></span>
-                  <span>9:16 Motion Production</span>
-                </div>
-                <h3 class="text-2xl sm:text-4xl font-serif text-[#001744] font-normal">
-                  Hospitality Reels &amp; Sensory Motion
-                </h3>
-              </div>
-              <div class="text-xs font-mono text-neutral-500 uppercase tracking-wider">
-                9:16 Format · Optimized for Mobile Feed &amp; Direct Bookings
-              </div>
+          <!-- SECTION 1: VERTICAL EDITORIAL SERIES (ÁLLÓ FORMÁTUM — Strictly 4:5 Portrait) -->
+          <div class="space-y-4">
+            <div id="archivePortraitHeader" class="text-xs uppercase tracking-[0.2em] text-[#001744] font-bold flex items-center gap-2 border-b border-neutral-200 pb-2">
+              <span class="w-2 h-2 bg-[#cc0c2f]"></span>
+              <span>Vertical Series · Editorial &amp; Atmosphere (Álló formátum · 4:5)</span>
             </div>
 
-            <!-- Two 9:16 Video Device Frames Side-by-Side -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-14 max-w-3xl mx-auto py-2">
-              
-              <!-- Video Frame 1: video-002.mov (Bars & Atmosphere) -->
-              <div class="flex flex-col items-center space-y-4">
-                <!-- Smartphone Device Frame with Bezel and Shadows -->
-                <div 
-                  class="relative w-full max-w-[270px] sm:max-w-[290px] p-3 sm:p-3.5 bg-gradient-to-b from-[#1c2738] via-[#000c24] to-[#001744] rounded-[44px] border-2 border-neutral-600/70 shadow-2xl shadow-[#001744]/25 ring-1 ring-white/10 group cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-[#cc0c2f]/20"
-                  onclick="openLightbox('video-002')"
-                >
-                  <!-- Phone Top Speaker Pill / Island -->
-                  <div class="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-black/90 rounded-full z-20 flex items-center justify-center gap-1.5 pointer-events-none border border-neutral-800">
-                    <span class="w-2 h-2 rounded-full bg-neutral-900 border border-neutral-700"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#cc0c2f]/70"></span>
-                  </div>
+            <!-- Strictly Portrait 4:5 Photo Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start" id="archivePortraitRow">
 
-                  <!-- 9:16 Screen Container -->
-                  <div class="aspect-[9/16] w-full rounded-[32px] overflow-hidden relative bg-black">
-                    <video
-                      src="./portfolio/public/video-002.mov"
-                      autoplay
-                      loop
-                      muted
-                      playsinline
-                      preload="auto"
-                      class="w-full h-full object-cover"
-                      onerror="this.classList.add('opacity-0'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
-                    >
-                      <source src="./portfolio/public/video-002.mov" type="video/quicktime" />
-                      <source src="./portfolio/public/video-002.mp4" type="video/mp4" />
-                      <source src="./public/portfolio/public/video-002.mov" type="video/quicktime" />
-                      <source src="/portfolio/public/video-002.mov" type="video/quicktime" />
-                      <source src="/portfolio/public/video-002.mp4" type="video/mp4" />
-                      <source src="./video-002.mov" type="video/quicktime" />
-                      <source src="./video-002.mp4" type="video/mp4" />
-                    </video>
-
-                    <!-- Elegant Fallback State -->
-                    <div class="hidden absolute inset-0 w-full h-full bg-[#000c24] flex flex-col items-center justify-center p-6 text-center">
-                      <div class="w-12 h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center mb-3">
-                        <svg class="w-5 h-5 text-[#cc0c2f]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                      </div>
-                      <span class="text-xs uppercase tracking-widest font-mono text-white/90">video-002.mov</span>
-                      <span class="text-[11px] text-neutral-400 font-sans mt-1">Cinematic Atmosphere Reel</span>
-                    </div>
-
-                    <!-- Top 9:16 Tag -->
-                    <div class="absolute top-8 left-3 z-10 flex items-center gap-1.5 bg-[#001744]/80 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase text-white border border-white/20">
-                      <span class="w-1.5 h-1.5 bg-[#cc0c2f] rounded-full animate-pulse"></span>
-                      <span>9:16 Reel</span>
-                    </div>
-
-                    <!-- Tap To Expand Hover Overlay -->
-                    <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                      <span class="px-4 py-2 bg-white text-[#001744] text-[11px] uppercase font-bold tracking-widest rounded-none shadow-md flex items-center gap-1.5">
-                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        Play Fullscreen
-                      </span>
-                    </div>
-
-                    <!-- Bottom Indicator -->
-                    <div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/50 rounded-full z-20 pointer-events-none"></div>
-                  </div>
-                </div>
-
-                <!-- Video Description Below Frame -->
-                <div class="text-center space-y-1">
-                  <h4 class="text-lg font-serif text-[#001744] font-semibold">Cinematic Atmosphere Reel</h4>
-                  <div class="text-xs font-mono text-[#cc0c2f] font-semibold">Bars &amp; Hospitality · 9:16 Vertical</div>
-                  <p class="text-[12px] text-neutral-600 font-sans">Sony FX6 · 4K 60fps · Ambient Soundscape</p>
-                </div>
-              </div>
-
-              <!-- Video Frame 2: video-003.mov (Gastronomy & Mixology) -->
-              <div class="flex flex-col items-center space-y-4">
-                <!-- Smartphone Device Frame with Bezel and Shadows -->
-                <div 
-                  class="relative w-full max-w-[270px] sm:max-w-[290px] p-3 sm:p-3.5 bg-gradient-to-b from-[#1c2738] via-[#000c24] to-[#001744] rounded-[44px] border-2 border-neutral-600/70 shadow-2xl shadow-[#001744]/25 ring-1 ring-white/10 group cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-[#cc0c2f]/20"
-                  onclick="openLightbox('video-003')"
-                >
-                  <!-- Phone Top Speaker Pill / Island -->
-                  <div class="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-black/90 rounded-full z-20 flex items-center justify-center gap-1.5 pointer-events-none border border-neutral-800">
-                    <span class="w-2 h-2 rounded-full bg-neutral-900 border border-neutral-700"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#cc0c2f]/70"></span>
-                  </div>
-
-                  <!-- 9:16 Screen Container -->
-                  <div class="aspect-[9/16] w-full rounded-[32px] overflow-hidden relative bg-black">
-                    <video
-                      src="./portfolio/public/video-003.mov"
-                      autoplay
-                      loop
-                      muted
-                      playsinline
-                      preload="auto"
-                      class="w-full h-full object-cover"
-                      onerror="this.classList.add('opacity-0'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden');"
-                    >
-                      <source src="./portfolio/public/video-003.mov" type="video/quicktime" />
-                      <source src="./portfolio/public/video-003.mp4" type="video/mp4" />
-                      <source src="./public/portfolio/public/video-003.mov" type="video/quicktime" />
-                      <source src="/portfolio/public/video-003.mov" type="video/quicktime" />
-                      <source src="/portfolio/public/video-003.mp4" type="video/mp4" />
-                      <source src="./video-003.mov" type="video/quicktime" />
-                      <source src="./video-003.mp4" type="video/mp4" />
-                    </video>
-
-                    <!-- Elegant Fallback State -->
-                    <div class="hidden absolute inset-0 w-full h-full bg-[#000c24] flex flex-col items-center justify-center p-6 text-center">
-                      <div class="w-12 h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center mb-3">
-                        <svg class="w-5 h-5 text-[#cc0c2f]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                      </div>
-                      <span class="text-xs uppercase tracking-widest font-mono text-white/90">video-003.mov</span>
-                      <span class="text-[11px] text-neutral-400 font-sans mt-1">Artisan Culinary &amp; Mixology</span>
-                    </div>
-
-                    <!-- Top 9:16 Tag -->
-                    <div class="absolute top-8 left-3 z-10 flex items-center gap-1.5 bg-[#001744]/80 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase text-white border border-white/20">
-                      <span class="w-1.5 h-1.5 bg-[#cc0c2f] rounded-full animate-pulse"></span>
-                      <span>9:16 Reel</span>
-                    </div>
-
-                    <!-- Tap To Expand Hover Overlay -->
-                    <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                      <span class="px-4 py-2 bg-white text-[#001744] text-[11px] uppercase font-bold tracking-widest rounded-none shadow-md flex items-center gap-1.5">
-                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        Play Fullscreen
-                      </span>
-                    </div>
-
-                    <!-- Bottom Indicator -->
-                    <div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/50 rounded-full z-20 pointer-events-none"></div>
-                  </div>
-                </div>
-
-                <!-- Video Description Below Frame -->
-                <div class="text-center space-y-1">
-                  <h4 class="text-lg font-serif text-[#001744] font-semibold">Artisan Culinary Experience</h4>
-                  <div class="text-xs font-mono text-[#cc0c2f] font-semibold">Gastronomy · 9:16 Vertical</div>
-                  <p class="text-[12px] text-neutral-600 font-sans">Slow-Motion Plating · Studio Grade</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- STILL PHOTOGRAPHY ARCHIVE (Curated High-Res Media Cards) -->
-          <div class="space-y-4 pt-2">
-            <div class="text-xs uppercase tracking-[0.2em] text-[#001744] font-bold flex items-center gap-2">
-              <span class="w-2 h-2 bg-[#001744]"></span>
-              <span>Curated Still Photography Archive</span>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start" id="galleryGrid">
-
-              <!-- Card 1: Stately Heritage Residence (Interior 004) - ÁLLÓ (4:5) - Featured -->
+              <!-- Card 1: Stately Heritage Residence (Interior 004) - ÁLLÓ (4:5) -->
               <div data-gallery-cat="hotels" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('grand-salon-004')">
                 <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
                   <img
@@ -883,7 +904,7 @@
                 </div>
               </div>
 
-              <!-- Card 2: Signature Gastronomy (Food 001) - ÁLLÓ (4:5) - Featured -->
+              <!-- Card 2: Signature Gastronomy (Food 001) - ÁLLÓ (4:5) -->
               <div data-gallery-cat="gastronomy" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('artisan-table-setting')">
                 <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
                   <img
@@ -909,19 +930,19 @@
                 </div>
               </div>
 
-              <!-- Card 3: Heritage Suite Architecture (Interior 005) - FEKVŐ (4:3) - Featured -->
-              <div data-gallery-cat="hotels" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('boutique-suite')">
-                <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+              <!-- Card 3: Atmospheric Sunlit Spaces (Interior 001) - ÁLLÓ (4:5) -->
+              <div data-gallery-cat="bars" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('turners-seating')">
+                <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
                   <img
-                    src="./portfolio/public/interior-photo-005.jpg"
-                    alt="Heritage Suite Architecture - Interior Photo 5"
+                    src="./portfolio/public/interior-photo-001.jpg"
+                    alt="Atmospheric Sunlit Spaces - Interior Photo 001"
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                     referrerpolicy="no-referrer"
-                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-005.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-005.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-001.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-001.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
                   />
                   <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                    <div class="font-serif text-xl">Heritage Suite Architecture</div>
+                    <div class="font-serif text-xl">Atmospheric Sunlit Spaces</div>
                   </div>
                   <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
@@ -930,14 +951,27 @@
                   </div>
                 </div>
                 <div class="flex justify-between items-baseline">
-                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Heritage Suite Architecture</h4>
-                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Boutique Hotel (Brussels)</span>
+                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Atmospheric Heritage Spaces</h4>
+                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Sunlit Brickwork &amp; Lounge (Ghent)</span>
                 </div>
               </div>
 
-              <!-- Card 4: Luxury Boutique Residence (Interior 003) - FEKVŐ (4:3) - Featured -->
+            </div>
+          </div>
+
+          <!-- SECTION 2: PANORAMIC SUITES & SPACES (FEKVŐ FORMÁTUM — Strictly 3:2 Landscape) -->
+          <div class="space-y-4 pt-4">
+            <div id="archiveLandscapeHeader" class="text-xs uppercase tracking-[0.2em] text-[#001744] font-bold flex items-center gap-2 border-b border-neutral-200 pb-2">
+              <span class="w-2 h-2 bg-[#001744]"></span>
+              <span>Panoramic Suites &amp; Architecture (Fekvő formátum · 3:2)</span>
+            </div>
+
+            <!-- Strictly Landscape 3:2 Photo Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start" id="archiveLandscapeRow">
+
+              <!-- Card 4: Luxury Boutique Residence (Interior 003) - FEKVŐ (3:2) -->
               <div data-gallery-cat="hotels" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('grand-suite-interior')">
-                <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+                <div class="aspect-[3/2] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
                   <img
                     src="./portfolio/public/interior-photo-003.jpg"
                     alt="Luxury Boutique Residence - Interior 003"
@@ -961,19 +995,19 @@
                 </div>
               </div>
 
-              <!-- Card 5: Classical Architectural Detail (Architecture 003) - FEKVŐ (4:3) - Featured -->
-              <div data-gallery-cat="bars" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('architecture-facade-003')">
-                <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+              <!-- Card 5: Heritage Suite Architecture (Interior 005) - FEKVŐ (3:2) -->
+              <div data-gallery-cat="hotels" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('boutique-suite')">
+                <div class="aspect-[3/2] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
                   <img
-                    src="./portfolio/public/architetcture-photo-003.jpg"
-                    alt="Classical Architectural Detail - Architecture 003"
+                    src="./portfolio/public/interior-photo-005.jpg"
+                    alt="Heritage Suite Architecture - Interior Photo 5"
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                     referrerpolicy="no-referrer"
-                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/architecture-photo-003.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/architecture-photo-003.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-005.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-005.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
                   />
                   <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                    <div class="font-serif text-xl">Classical Architectural Detail</div>
+                    <div class="font-serif text-xl">Heritage Suite Architecture</div>
                   </div>
                   <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
@@ -982,14 +1016,14 @@
                   </div>
                 </div>
                 <div class="flex justify-between items-baseline">
-                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Classical Architectural Detail</h4>
-                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Heritage Architecture (Vienna)</span>
+                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Heritage Suite Architecture</h4>
+                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Boutique Hotel (Brussels)</span>
                 </div>
               </div>
 
-              <!-- Card 6: Rooftop Cocktail Lounge (Interior 002) - FEKVŐ (4:3) - Featured -->
+              <!-- Card 6: Rooftop Cocktail Lounge (Interior 002) - FEKVŐ (3:2) -->
               <div data-gallery-cat="bars" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('penthouse-terrace')">
-                <div class="aspect-[4/3] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+                <div class="aspect-[3/2] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
                   <img
                     src="./portfolio/public/interior-photo-002.jpg"
                     alt="Atmosphere & Spaces - Interior Photo 2"
@@ -1014,8 +1048,6 @@
               </div>
 
             </div>
-          </div>
-
           </div>
 
         </div>
@@ -1313,14 +1345,17 @@
         </div>
       </div>
 
-      <div class="my-auto max-w-4xl mx-auto w-full flex items-center justify-center p-0 sm:p-2 relative py-4 sm:py-0">
-        <div id="lbVisualContainer" class="w-full aspect-[4/3] rounded-none overflow-hidden border border-neutral-800 shadow-2xl flex items-center justify-center bg-[#000c24] max-h-[55vh] sm:max-h-[70vh]">
-        </div>
-
-        <button onclick="navLightbox(-1)" class="absolute left-1 sm:-ml-12 p-3 text-white bg-[#001744]/90 hover:bg-[#cc0c2f] rounded-none transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center shadow-lg" aria-label="Previous image">
+      <!-- Main Visual Stage (Dedicated Dynamic Frame for Vertical 9:16 Reels vs Portrait/Landscape Photos) -->
+      <div id="lbVisualWrapper" class="my-auto max-w-5xl mx-auto w-full flex items-center justify-center p-0 relative py-2 sm:py-3">
+        
+        <button onclick="navLightbox(-1)" class="z-30 absolute left-1 sm:left-3 p-3 text-white bg-[#001744]/80 hover:bg-[#cc0c2f] backdrop-blur-md rounded-none transition-all min-w-[44px] min-h-[44px] flex items-center justify-center shadow-xl border border-white/10" aria-label="Previous">
           ❮
         </button>
-        <button onclick="navLightbox(1)" class="absolute right-1 sm:-mr-12 p-3 text-white bg-[#001744]/90 hover:bg-[#cc0c2f] rounded-none transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center shadow-lg" aria-label="Next image">
+
+        <div id="lbVisualContainer" class="flex items-center justify-center transition-all duration-300">
+        </div>
+
+        <button onclick="navLightbox(1)" class="z-30 absolute right-1 sm:right-3 p-3 text-white bg-[#001744]/80 hover:bg-[#cc0c2f] backdrop-blur-md rounded-none transition-all min-w-[44px] min-h-[44px] flex items-center justify-center shadow-xl border border-white/10" aria-label="Next">
           ❯
         </button>
       </div>
@@ -1364,31 +1399,34 @@
         const buttons = document.querySelectorAll('.cat-btn');
         buttons.forEach(btn => {
           if (btn.getAttribute('data-cat') === cat) {
-            btn.className = 'cat-btn px-4 py-2 font-bold tracking-wider uppercase transition-colors bg-[#001744] text-white rounded-none';
+            btn.className = 'cat-btn shrink-0 px-3.5 sm:px-4 py-2 sm:py-2.5 font-bold tracking-wider uppercase transition-colors bg-[#001744] text-white rounded-none';
           } else {
-            btn.className = 'cat-btn px-4 py-2 font-bold tracking-wider uppercase transition-colors text-neutral-700 hover:text-[#001744] rounded-none';
+            btn.className = 'cat-btn shrink-0 px-3.5 sm:px-4 py-2 sm:py-2.5 font-bold tracking-wider uppercase transition-colors text-neutral-700 hover:text-[#001744] rounded-none';
           }
         });
 
         const items = document.querySelectorAll('.gallery-item');
+        let visiblePortrait = 0;
+        let visibleLandscape = 0;
+
         items.forEach(item => {
           const itemCat = item.getAttribute('data-gallery-cat');
           const isFeatured = item.getAttribute('data-featured') === 'true';
+          const matches = (cat === 'all') ? isFeatured : (itemCat === cat);
 
-          if (cat === 'all') {
-            if (isFeatured) {
-              item.classList.remove('hidden');
-            } else {
-              item.classList.add('hidden');
-            }
+          if (matches) {
+            item.classList.remove('hidden');
+            if (item.closest('#archivePortraitRow')) visiblePortrait++;
+            if (item.closest('#archiveLandscapeRow')) visibleLandscape++;
           } else {
-            if (itemCat === cat) {
-              item.classList.remove('hidden');
-            } else {
-              item.classList.add('hidden');
-            }
+            item.classList.add('hidden');
           }
         });
+
+        const pSection = document.getElementById('archivePortraitHeader')?.parentElement;
+        const lSection = document.getElementById('archiveLandscapeHeader')?.parentElement;
+        if (pSection) pSection.style.display = (visiblePortrait > 0) ? '' : 'none';
+        if (lSection) lSection.style.display = (visibleLandscape > 0) ? '' : 'none';
       }
 
       // 4. Contact Form Handling
@@ -1403,69 +1441,14 @@
       }
 
       // 5. Fullscreen Lightbox Data & Controls
-      // 5. Fullscreen Lightbox Data & Controls
       const lightboxData = {
         'drink-video-001': {
           title: "Signature Mixology & Dynamic Reels",
           category: "Dynamic Video & Reels",
           specs: "ARRI / Sony FX6 · 50mm Prime · 4K / 60fps · Sensory Motion Grade",
           desc: "Dynamic short-form video crafted specifically to stop the scroll and drive direct venue bookings. Mastered for vertical platforms.",
+          aspect: "9:16",
           video: "./portfolio/public/video-001.mp4"
-        },
-        'turners-interior': {
-          title: "Turner's Cafe Bar & Terrace",
-          category: "Lifestyle & Details",
-          specs: "ARRI / Sony FX6 · 35mm Prime · f/1.8 · Natural Ambient & Bounce",
-          desc: "Hospitality interior shoot for Turner's Cafe Bar. Emphasizing the brick archways, custom orange velvet seating, and warm globe pendant fixtures.",
-          image: "/portfolio/public/food-photo-002.jpg"
-        },
-        'turners-coffee': {
-          title: "Heritage Architecture & Elevation",
-          category: "Architecture & Spaces",
-          specs: "24mm Tilt-Shift · f/5.6 · 1/125s · Natural Golden Hour Elevation",
-          desc: "Architectural and facade capture emphasizing stately classical design, clean geometric lines, and prestigious hospitality presence.",
-          image: "/architecture-photo-002.jpg"
-        },
-        'turners-seating': {
-          title: "Sunlit Brick Corner & Armchair",
-          category: "Atmosphere & Spaces",
-          specs: "24mm Tilt-Shift · f/4.0 · Natural Day Window Light",
-          desc: "Atmospheric corner shot highlighting natural sunlight filtering through the street-side window onto the exposed brickwork and velvet armchairs.",
-          image: "/portfolio/public/interior-photo-001.jpg"
-        },
-        'culinary-plated': {
-          title: "Degustation Plating & Microgreens",
-          category: "Gastronomy",
-          specs: "50mm Macro · f/2.2 · Softbox Overhead Light",
-          desc: "Editorial culinary presentation for high-end bistros and Michelin-starred tasting menus in Vienna, featuring crisp color separation."
-        },
-        'boutique-suite': {
-          title: "Heritage Hotel Palace Suite",
-          category: "Boutique Hotels",
-          specs: "16-35mm · f/4.0 · Balanced Sconce & Daylight",
-          desc: "Staged guestroom suite photography highlighting rich walnut woodwork, crisp linen textures, and ambient lighting in Brussels.",
-          image: "/interior-photo-005.jpg"
-        },
-        'penthouse-terrace': {
-          title: "Rooftop Cocktail Lounge & Fire Pit",
-          category: "Bars & Terraces",
-          specs: "20mm Ultra-Wide · f/5.6 · Twilight Blue Hour Exposure",
-          desc: "Twilight hospitality capture of a luxury hotel rooftop terrace featuring an illuminated fire pit, evening guests, and city vistas in Budapest.",
-          image: "/portfolio/public/interior-photo-002.jpg"
-        },
-        'grand-salon-004': {
-          title: "Stately Heritage Residence",
-          category: "Boutique Hotels",
-          specs: "24mm Tilt-Shift · f/4.0 · High Ceilings & Natural Window Light",
-          desc: "Vertical architectural capture showcasing high ceilings, grand arched windows, and authentic heritage styling in Ghent.",
-          image: "/portfolio/public/interior-photo-004.jpg"
-        },
-        'grand-suite-interior': {
-          title: "Luxury Boutique Residence",
-          category: "Boutique Hotels",
-          specs: "35mm Prime · f/2.0 · Natural Daylight & Soft Ambient Sconces",
-          desc: "Architectural interior staging capturing rich textures, warm ambient light, and spacious luxury hotel styling in Ghent.",
-          image: "/portfolio/public/interior-photo-003.jpg"
         },
         'video-002': {
           title: "Cinematic Atmosphere Reel",
@@ -1483,33 +1466,69 @@
           aspect: "9:16",
           video: "./portfolio/public/video-003.mov"
         },
-        'heritage-facade': {
-          title: "Cinematic Atmosphere Reel",
-          category: "Bars & Terraces",
-          specs: "Sony FX6 · 35mm Prime · 4K / 60fps · Cinematic Grade",
-          desc: "Dynamic hospitality motion video showcasing vibrant venue ambiance and guest experience.",
-          video: "./portfolio/public/video-002.mov"
+        'grand-salon-004': {
+          title: "Stately Heritage Residence",
+          category: "Boutique Hotels",
+          specs: "24mm Tilt-Shift · f/4.0 · High Ceilings & Natural Window Light",
+          desc: "Vertical architectural capture showcasing high ceilings, grand arched windows, and authentic heritage styling in Ghent.",
+          aspect: "4:5",
+          image: "./portfolio/public/interior-photo-004.jpg"
         },
         'artisan-table-setting': {
           title: "Signature Gastronomy Atmosphere",
           category: "Gastronomy",
           specs: "50mm Prime · f/1.8 · Warm Ambient Candlelight & Rim",
           desc: "Sensory dining capture showcasing fine culinary artistry, premium tableware, and intimate evening ambiance in Budapest.",
-          image: "/portfolio/public/food-photo-001.jpg"
+          aspect: "4:5",
+          image: "./portfolio/public/food-photo-001.jpg"
         },
-        'architecture-facade-003': {
-          title: "Classical Architectural Detail",
-          category: "Heritage Architecture",
-          specs: "24mm Tilt-Shift · f/5.6 · 1/250s · Golden Hour Daylight",
-          desc: "Stately historic facade and elevation capture emphasizing neoclassical columns, stone relief, and grand hospitality architecture in Vienna.",
-          image: "/architetcture-photo-003.jpg"
+        'turners-seating': {
+          title: "Sunlit Brick Corner & Armchair",
+          category: "Bars & Terraces",
+          specs: "24mm Tilt-Shift · f/4.0 · Natural Day Window Light",
+          desc: "Atmospheric corner shot highlighting natural sunlight filtering through the street-side window onto the exposed brickwork and velvet armchairs.",
+          aspect: "4:5",
+          image: "./portfolio/public/interior-photo-001.jpg"
         },
-        'food-styling-003': {
-          title: "Artisan Culinary Experience",
+        'grand-suite-interior': {
+          title: "Luxury Boutique Residence",
+          category: "Boutique Hotels",
+          specs: "35mm Prime · f/2.0 · Natural Daylight & Soft Ambient Sconces",
+          desc: "Architectural interior staging capturing rich textures, warm ambient light, and spacious luxury hotel styling in Ghent.",
+          aspect: "3:2",
+          image: "./portfolio/public/interior-photo-003.jpg"
+        },
+        'boutique-suite': {
+          title: "Heritage Hotel Palace Suite",
+          category: "Boutique Hotels",
+          specs: "16-35mm · f/4.0 · Balanced Sconce & Daylight",
+          desc: "Staged guestroom suite photography highlighting rich walnut woodwork, crisp linen textures, and ambient lighting in Brussels.",
+          aspect: "3:2",
+          image: "./portfolio/public/interior-photo-005.jpg"
+        },
+        'penthouse-terrace': {
+          title: "Rooftop Cocktail Lounge & Fire Pit",
+          category: "Bars & Terraces",
+          specs: "20mm Ultra-Wide · f/5.6 · Twilight Blue Hour Exposure",
+          desc: "Twilight hospitality capture of a luxury hotel rooftop terrace featuring an illuminated fire pit, evening guests, and city vistas in Budapest.",
+          aspect: "3:2",
+          image: "./portfolio/public/interior-photo-002.jpg"
+        },
+        'turners-interior': {
+          title: "Turner's Cafe Bar & Terrace",
           category: "Gastronomy",
-          specs: "50mm Macro · 4K / 60fps · Slow-Motion Culinary Capture",
-          desc: "Sensory gastronomy and mixology video highlighting fine dining presentation and texture in motion.",
-          video: "./portfolio/public/video-003.mov"
+          specs: "ARRI / Sony FX6 · 35mm Prime · f/1.8 · Natural Ambient & Bounce",
+          desc: "Hospitality interior shoot for Turner's Cafe Bar. Emphasizing the brick archways, custom orange velvet seating, and warm globe pendant fixtures.",
+          aspect: "4:5",
+          image: "./portfolio/public/food-photo-002.jpg"
+        },
+        'turners-coffee': {
+          title: "Heritage Architecture & Elevation",
+          category: "Boutique Hotels",
+          specs: "24mm Tilt-Shift · f/5.6 · 1/125s · Natural Golden Hour Elevation",
+          desc: "Architectural and facade capture emphasizing stately classical design, clean geometric lines, and prestigious hospitality presence.",
+          aspect: "4:5",
+          image: "./portfolio/public/architecture-photo-002.jpg"
         }
       };
 
@@ -1533,48 +1552,69 @@
         document.getElementById('lbSpecs').textContent = item.specs;
 
         const container = document.getElementById('lbVisualContainer');
-        if (item.video) {
-          const isVertical = item.aspect === '9:16' || key.includes('video');
+        const isReelOrVertical = item.aspect === '9:16' || key.includes('video') || item.video;
+
+        if (item.video && isReelOrVertical) {
+          // Strictly dedicated 9:16 vertical container - NO wide horizontal black bars!
+          container.className = 'relative flex items-center justify-center mx-auto aspect-[9/16] h-[72vh] sm:h-[80vh] w-auto max-w-[92vw] rounded-2xl overflow-hidden shadow-2xl border-2 border-neutral-700/80 bg-black';
           container.innerHTML = `
-            <div class="w-full h-full relative flex items-center justify-center p-2">
-              <video
-                src="${item.video}"
-                poster="${item.image || ''}"
-                autoplay
-                loop
-                muted
-                playsinline
-                controls
-                class="${isVertical ? 'aspect-[9/16] max-h-[78vh] w-auto' : 'max-h-[70vh] w-full'} object-contain rounded-2xl shadow-2xl bg-black border border-white/15"
-              >
-                <source src="${item.video}" type="video/quicktime" />
-                <source src="${item.video}" type="video/mp4" />
-                <source src="./public/portfolio/public/${key}.mov" type="video/quicktime" />
-                <source src="/portfolio/public/${key}.mov" type="video/quicktime" />
-                <source src="./portfolio/public/${key}.mov" type="video/quicktime" />
-                <source src="${item.video.replace('./portfolio/public', '')}" type="video/quicktime" />
-                <source src="${item.video.replace('./portfolio/public', '')}" type="video/mp4" />
-              </video>
+            <video
+              src="${item.video}"
+              poster="${item.image || ''}"
+              autoplay
+              loop
+              muted
+              playsinline
+              controls
+              class="w-full h-full object-cover rounded-2xl"
+            >
+              <source src="${item.video}" type="video/quicktime" />
+              <source src="${item.video}" type="video/mp4" />
+              <source src="./portfolio/public/${key}.mov" type="video/quicktime" />
+              <source src="/portfolio/public/${key}.mov" type="video/quicktime" />
+              <source src="./public/portfolio/public/${key}.mov" type="video/quicktime" />
+              <source src="${item.video.replace('./portfolio/public', '')}" type="video/quicktime" />
+              <source src="${item.video.replace('./portfolio/public', '')}" type="video/mp4" />
+            </video>
+            <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase text-white border border-white/20 pointer-events-none">
+              <span class="w-1.5 h-1.5 bg-[#cc0c2f] rounded-full animate-pulse"></span>
+              <span>9:16 Reel</span>
+            </div>
+          `;
+        } else if (item.aspect === '4:5' || key === 'grand-salon-004' || key === 'artisan-table-setting' || key === 'turners-seating' || key === 'turners-coffee' || key === 'turners-interior') {
+          // Dedicated Portrait Photo Container (4:5)
+          container.className = 'relative flex items-center justify-center mx-auto aspect-[4/5] h-[68vh] sm:h-[75vh] w-auto max-w-[92vw] overflow-hidden shadow-2xl border border-neutral-800 bg-[#000c24] rounded-none';
+          container.innerHTML = `
+            <img
+              src="${item.image}"
+              alt="${item.title}"
+              class="w-full h-full object-cover rounded-none"
+              onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src = this.getAttribute('src').startsWith('/portfolio/public') ? this.getAttribute('src').replace('/portfolio/public', '') : ('/portfolio/public' + (this.getAttribute('src').startsWith('/') ? '' : '/') + this.getAttribute('src')); } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+            />
+            <div class="hidden text-center p-8 space-y-3">
+              <div class="text-xs uppercase tracking-[0.25em] font-mono text-[#cc0c2f] font-bold">${item.category}</div>
+              <div class="text-3xl font-serif text-white">${item.title}</div>
+              <p class="text-xs text-neutral-300 max-w-lg mx-auto leading-relaxed">${item.desc}</p>
             </div>
           `;
         } else if (item.image) {
+          // Dedicated Landscape Photo Container (3:2)
+          container.className = 'relative flex items-center justify-center mx-auto aspect-[3/2] w-full max-w-3xl sm:max-w-4xl max-h-[60vh] sm:max-h-[72vh] overflow-hidden shadow-2xl border border-neutral-800 bg-[#000c24] rounded-none';
           container.innerHTML = `
-            <div class="w-full h-full relative flex items-center justify-center">
-              <img
-                src="${item.image}"
-                alt="${item.title}"
-                class="w-full h-full object-contain max-h-[70vh] rounded-none"
-                onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src = this.getAttribute('src').startsWith('/portfolio/public') ? this.getAttribute('src').replace('/portfolio/public', '') : ('/portfolio/public' + (this.getAttribute('src').startsWith('/') ? '' : '/') + this.getAttribute('src')); } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
-              />
-              <div class="hidden text-center p-8 space-y-3">
-                <div class="text-xs uppercase tracking-[0.25em] font-mono text-[#cc0c2f] font-bold">${item.category}</div>
-                <div class="text-3xl font-serif text-white">${item.title}</div>
-                <p class="text-xs text-neutral-300 max-w-lg mx-auto leading-relaxed">${item.desc}</p>
-                <div class="text-[11px] font-mono text-white/80 pt-2">[ High-Resolution Master 8K Staged ]</div>
-              </div>
+            <img
+              src="${item.image}"
+              alt="${item.title}"
+              class="w-full h-full object-cover rounded-none"
+              onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src = this.getAttribute('src').startsWith('/portfolio/public') ? this.getAttribute('src').replace('/portfolio/public', '') : ('/portfolio/public' + (this.getAttribute('src').startsWith('/') ? '' : '/') + this.getAttribute('src')); } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+            />
+            <div class="hidden text-center p-8 space-y-3">
+              <div class="text-xs uppercase tracking-[0.25em] font-mono text-[#cc0c2f] font-bold">${item.category}</div>
+              <div class="text-3xl font-serif text-white">${item.title}</div>
+              <p class="text-xs text-neutral-300 max-w-lg mx-auto leading-relaxed">${item.desc}</p>
             </div>
           `;
         } else {
+          container.className = 'relative flex items-center justify-center p-8 border border-neutral-800 bg-[#000c24] rounded-none';
           container.innerHTML = `
             <div class="text-center p-8 space-y-3">
               <div class="text-xs uppercase tracking-[0.25em] font-mono text-[#cc0c2f] font-bold">${item.category}</div>
@@ -1587,6 +1627,8 @@
       }
 
       function navLightbox(direction) {
+        const lbVid = document.querySelector('#lbVisualContainer video');
+        if (lbVid) lbVid.pause();
         currentIndex = (currentIndex + direction + keysList.length) % keysList.length;
         renderLightboxItem();
       }
