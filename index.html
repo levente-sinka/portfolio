@@ -116,37 +116,13 @@
 
       /* Mobile Optimizations (max-width: 768px) */
       @media (max-width: 768px) {
-        /* Fejléc CTA: Rejtsd el a felső navigációs menüben (header) lévő 'INQUIRE' gombot */
+        /* Header CTA: Hide top navigation 'INQUIRE' button on mobile (sticky bar handles it) */
         header .shrink-0 > a[href="#contact"],
         header a[href="#contact"].bg-\[\#001744\] {
           display: none !important;
         }
 
-        /* Portfólió feliratok: Címek és piros kategória címkék egymás alá rendezése balra igazítva */
-        .gallery-item .flex.justify-between.items-baseline,
-        .gallery-item .flex.justify-between,
-        #portfolio .gallery-item .flex.justify-between {
-          display: flex !important;
-          flex-direction: column !important;
-          align-items: flex-start !important;
-          gap: 0.35rem !important;
-          text-align: left !important;
-        }
-
-        .gallery-item .flex.justify-between > *,
-        #portfolio .gallery-item .flex.justify-between > * {
-          text-align: left !important;
-        }
-
-        .gallery-item .flex.justify-between span,
-        .gallery-item span.text-\[\#cc0c2f\],
-        #portfolio .gallery-item span.text-\[\#cc0c2f\] {
-          margin-left: 0 !important;
-          padding-left: 0 !important;
-          text-align: left !important;
-        }
-
-        /* Hero gombok: Vékonyabb, elegánsabb Hero CTA gombok csökkentett paddinggel és finomabb betűmérettel */
+        /* Hero buttons: Refined compact padding and typography for mobile */
         main section:first-of-type .pt-2.flex a,
         main section:first-of-type a[href="#contact"].bg-\[\#001744\],
         main section:first-of-type a[href*="wa.me"] {
@@ -156,7 +132,7 @@
           line-height: 1.25 !important;
         }
 
-        /* Űrlap iOS optimalizálás: Fix 16px betűméret az input és textarea mezőkhöz (Safari auto-zoom megakadályozása) */
+        /* Form iOS optimization: Fixed 16px font size to prevent Safari auto-zoom */
         #contactForm input,
         #contactForm textarea,
         #contact input,
@@ -819,213 +795,269 @@
         </div>
       </section>
 
-      <!-- HOSPITALITY ARCHIVE (Categorized Photography — Unmixed Portrait & Landscape Galleries) -->
-      <section id="portfolio" class="py-20 border-b border-neutral-200 bg-white fade-in-section">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-10 sm:space-y-12">
+      <!-- HOSPITALITY ARCHIVE (Compact Editorial Filmstrip — Strictly Separated Landscape 3:2 & Portrait 4:5) -->
+      <section id="portfolio" class="py-12 sm:py-16 border-b border-neutral-200 bg-[#f8f9fa] fade-in-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-7">
           
-          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div class="space-y-3">
-              <div class="text-xs uppercase tracking-[0.25em] text-[#cc0c2f] font-bold">Hospitality Photography Archive</div>
-              <h2 class="text-3xl sm:text-5xl font-serif text-[#001744] font-normal">
-                Boutique Hotels, Gastronomy &amp; Lounges
+          <!-- Compact Header & Unified Category + Format Filter Toolbar -->
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-neutral-200 pb-5">
+            <div class="space-y-1.5">
+              <div class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-[#cc0c2f] font-bold">
+                <span class="w-1.5 h-1.5 bg-[#cc0c2f]"></span>
+                <span>Photography Archive</span>
+              </div>
+              <h2 class="text-2xl sm:text-4xl font-serif text-[#001744] font-normal">
+                Selected Hospitality &amp; Culinary Works
               </h2>
             </div>
 
-            <!-- Category Filter Tabs (Horizontally scrollable & wrapped for clean mobile access) -->
-            <div class="w-full md:w-auto overflow-x-auto hide-scrollbar whitespace-nowrap py-1">
-              <div class="flex flex-wrap sm:flex-nowrap items-center justify-start sm:justify-center gap-1.5 p-1 bg-neutral-100 border border-neutral-300 rounded-none text-xs w-full sm:w-auto">
-                <button onclick="filterGallery('all')" data-cat="all" class="cat-btn shrink-0 px-3.5 sm:px-4 py-2 sm:py-2.5 font-bold tracking-wider uppercase transition-colors bg-[#001744] text-white rounded-none">
-                  All Works
+            <!-- Dual Filter Controls: Orientation Switcher & Category Filter -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+              
+              <!-- Orientation Format Tabs (Prevents any mixing) -->
+              <div class="inline-flex items-center p-1 bg-white border border-neutral-300 rounded-none text-[11px] shrink-0">
+                <button onclick="filterOrientation('all')" data-orient="all" class="orient-btn px-3 py-1.5 font-bold tracking-wider uppercase transition-colors bg-[#001744] text-white rounded-none">
+                  All Formats
                 </button>
-                <button onclick="filterGallery('gastronomy')" data-cat="gastronomy" class="cat-btn shrink-0 px-3.5 sm:px-4 py-2 sm:py-2.5 font-bold tracking-wider uppercase transition-colors text-neutral-700 hover:text-[#001744] rounded-none">
-                  Gastronomy
+                <button onclick="filterOrientation('landscape')" data-orient="landscape" class="orient-btn px-3 py-1.5 font-bold tracking-wider uppercase transition-colors text-neutral-600 hover:text-[#001744] rounded-none">
+                  Landscape
                 </button>
-                <button onclick="filterGallery('hotels')" data-cat="hotels" class="cat-btn shrink-0 px-3.5 sm:px-4 py-2 sm:py-2.5 font-bold tracking-wider uppercase transition-colors text-neutral-700 hover:text-[#001744] rounded-none">
-                  Boutique Hotels
-                </button>
-                <button onclick="filterGallery('bars')" data-cat="bars" class="cat-btn shrink-0 px-3.5 sm:px-4 py-2 sm:py-2.5 font-bold tracking-wider uppercase transition-colors text-neutral-700 hover:text-[#001744] rounded-none">
-                  Bars &amp; Terraces
+                <button onclick="filterOrientation('portrait')" data-orient="portrait" class="orient-btn px-3 py-1.5 font-bold tracking-wider uppercase transition-colors text-neutral-600 hover:text-[#001744] rounded-none">
+                  Portrait
                 </button>
               </div>
-            </div>
-          </div>
 
-          <!-- SECTION 1: VERTICAL EDITORIAL SERIES (ÁLLÓ FORMÁTUM — Strictly 4:5 Portrait) -->
-          <div class="space-y-4">
-            <div id="archivePortraitHeader" class="text-xs uppercase tracking-[0.2em] text-[#001744] font-bold flex items-center gap-2 border-b border-neutral-200 pb-2">
-              <span class="w-2 h-2 bg-[#cc0c2f]"></span>
-              <span>Vertical Series · Editorial &amp; Atmosphere (Álló formátum · 4:5)</span>
-            </div>
-
-            <!-- Strictly Portrait 4:5 Photo Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start" id="archivePortraitRow">
-
-              <!-- Card 1: Stately Heritage Residence (Interior 004) - ÁLLÓ (4:5) -->
-              <div data-gallery-cat="hotels" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('grand-salon-004')">
-                <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                  <img
-                    src="./portfolio/public/interior-photo-004.jpg"
-                    alt="Stately Heritage Residence - Interior Photo 004"
-                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                    referrerpolicy="no-referrer"
-                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-004.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-004.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
-                  />
-                  <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                    <div class="font-serif text-xl">Stately Heritage Residence</div>
-                  </div>
-                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                      View Fullscreen
-                    </span>
-                  </div>
-                </div>
-                <div class="flex justify-between items-baseline">
-                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Stately Heritage Residence</h4>
-                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Suites &amp; Grand Living (Ghent)</span>
-                </div>
-              </div>
-
-              <!-- Card 2: Signature Gastronomy (Food 001) - ÁLLÓ (4:5) -->
-              <div data-gallery-cat="gastronomy" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('artisan-table-setting')">
-                <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                  <img
-                    src="./portfolio/public/food-photo-001.jpg"
-                    alt="Signature Gastronomy Staging - Food Photo 001"
-                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                    referrerpolicy="no-referrer"
-                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/food-photo-001.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/food-photo-001.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
-                  />
-                  <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                    <div class="font-serif text-xl">Signature Gastronomy Atmosphere</div>
-                  </div>
-                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                      View Fullscreen
-                    </span>
-                  </div>
-                </div>
-                <div class="flex justify-between items-baseline">
-                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Signature Gastronomy Staging</h4>
-                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Fine Dining &amp; Plating (Budapest)</span>
-                </div>
-              </div>
-
-              <!-- Card 3: Atmospheric Sunlit Spaces (Interior 001) - ÁLLÓ (4:5) -->
-              <div data-gallery-cat="bars" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('turners-seating')">
-                <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
-                  <img
-                    src="./portfolio/public/interior-photo-001.jpg"
-                    alt="Atmospheric Sunlit Spaces - Interior Photo 001"
-                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                    referrerpolicy="no-referrer"
-                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-001.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-001.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
-                  />
-                  <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                    <div class="font-serif text-xl">Atmospheric Sunlit Spaces</div>
-                  </div>
-                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                      View Fullscreen
-                    </span>
-                  </div>
-                </div>
-                <div class="flex justify-between items-baseline">
-                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Atmospheric Heritage Spaces</h4>
-                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Sunlit Brickwork &amp; Lounge (Ghent)</span>
+              <!-- Category Filter Tabs -->
+              <div class="overflow-x-auto hide-scrollbar whitespace-nowrap">
+                <div class="inline-flex items-center gap-1 p-1 bg-white border border-neutral-300 rounded-none text-[11px]">
+                  <button onclick="filterGallery('all')" data-cat="all" class="cat-btn shrink-0 px-3 py-1.5 font-bold tracking-wider uppercase transition-colors bg-[#001744] text-white rounded-none">
+                    All
+                  </button>
+                  <button onclick="filterGallery('hotels')" data-cat="hotels" class="cat-btn shrink-0 px-3 py-1.5 font-bold tracking-wider uppercase transition-colors text-neutral-600 hover:text-[#001744] rounded-none">
+                    Boutique Hotels
+                  </button>
+                  <button onclick="filterGallery('gastronomy')" data-cat="gastronomy" class="cat-btn shrink-0 px-3 py-1.5 font-bold tracking-wider uppercase transition-colors text-neutral-600 hover:text-[#001744] rounded-none">
+                    Gastronomy
+                  </button>
+                  <button onclick="filterGallery('bars')" data-cat="bars" class="cat-btn shrink-0 px-3 py-1.5 font-bold tracking-wider uppercase transition-colors text-neutral-600 hover:text-[#001744] rounded-none">
+                    Bars &amp; Lounges
+                  </button>
                 </div>
               </div>
 
             </div>
           </div>
 
-          <!-- SECTION 2: PANORAMIC SUITES & SPACES (FEKVŐ FORMÁTUM — Strictly 3:2 Landscape) -->
-          <div class="space-y-4 pt-4">
-            <div id="archiveLandscapeHeader" class="text-xs uppercase tracking-[0.2em] text-[#001744] font-bold flex items-center gap-2 border-b border-neutral-200 pb-2">
-              <span class="w-2 h-2 bg-[#001744]"></span>
-              <span>Panoramic Suites &amp; Architecture (Fekvő formátum · 3:2)</span>
+          <!-- STRIP 1: LANDSCAPE SERIES (Strictly 3:2 Horizontal Aspect Ratio) -->
+          <div id="archiveLandscapeBlock" class="space-y-2.5">
+            <div id="archiveLandscapeHeader" class="flex items-center justify-between">
+              <div class="text-[11px] uppercase tracking-[0.2em] text-[#001744] font-bold flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-[#001744]"></span>
+                <span>Landscape Series · 3:2 Architectural &amp; Interior Frames</span>
+              </div>
+              <div class="hidden sm:flex items-center gap-1.5">
+                <button onclick="scrollArchiveRow('archiveLandscapeRow', -300)" class="w-7 h-7 flex items-center justify-center bg-white border border-neutral-300 text-[#001744] hover:bg-[#001744] hover:text-white transition-colors text-xs" aria-label="Scroll landscape series left">‹</button>
+                <button onclick="scrollArchiveRow('archiveLandscapeRow', 300)" class="w-7 h-7 flex items-center justify-center bg-white border border-neutral-300 text-[#001744] hover:bg-[#001744] hover:text-white transition-colors text-xs" aria-label="Scroll landscape series right">›</button>
+              </div>
             </div>
 
-            <!-- Strictly Landscape 3:2 Photo Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start" id="archiveLandscapeRow">
-
-              <!-- Card 4: Luxury Boutique Residence (Interior 003) - FEKVŐ (3:2) -->
-              <div data-gallery-cat="hotels" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('grand-suite-interior')">
-                <div class="aspect-[3/2] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+            <div id="archiveLandscapeRow" class="flex gap-3.5 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-1 scroll-smooth">
+              
+              <!-- L1: interior-photo-003 (3:2) -->
+              <div data-gallery-cat="hotels" data-orient-type="landscape" class="gallery-item shrink-0 w-[240px] sm:w-[275px] snap-start group cursor-pointer" onclick="openLightbox('grand-suite-interior')">
+                <div class="aspect-[3/2] w-full bg-[#000c24] rounded-none overflow-hidden border border-neutral-300 relative photo-frame shadow-xs">
                   <img
                     src="./portfolio/public/interior-photo-003.jpg"
-                    alt="Luxury Boutique Residence - Interior 003"
+                    alt="Luxury Boutique Residence"
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                     referrerpolicy="no-referrer"
-                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-003.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-003.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-003.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-003.jpg'; }"
                   />
-                  <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                    <div class="font-serif text-xl">Luxury Boutique Residence</div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#000c24]/90 via-[#000c24]/20 to-transparent flex flex-col justify-end p-3">
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-[#cc0c2f] font-bold">Boutique Hotels · Ghent</span>
+                    <h4 class="text-sm sm:text-base font-serif text-white font-semibold leading-snug">Luxury Boutique Residence</h4>
                   </div>
-                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                      View Fullscreen
-                    </span>
-                  </div>
-                </div>
-                <div class="flex justify-between items-baseline">
-                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Luxury Boutique Residence</h4>
-                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Suites &amp; Living (Ghent)</span>
                 </div>
               </div>
 
-              <!-- Card 5: Heritage Suite Architecture (Interior 005) - FEKVŐ (3:2) -->
-              <div data-gallery-cat="hotels" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('boutique-suite')">
-                <div class="aspect-[3/2] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+              <!-- L2: interior-photo-005 (3:2) -->
+              <div data-gallery-cat="hotels" data-orient-type="landscape" class="gallery-item shrink-0 w-[240px] sm:w-[275px] snap-start group cursor-pointer" onclick="openLightbox('boutique-suite')">
+                <div class="aspect-[3/2] w-full bg-[#000c24] rounded-none overflow-hidden border border-neutral-300 relative photo-frame shadow-xs">
                   <img
                     src="./portfolio/public/interior-photo-005.jpg"
-                    alt="Heritage Suite Architecture - Interior Photo 5"
+                    alt="Heritage Suite Architecture"
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                     referrerpolicy="no-referrer"
-                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-005.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-005.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-005.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-005.jpg'; }"
                   />
-                  <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                    <div class="font-serif text-xl">Heritage Suite Architecture</div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#000c24]/90 via-[#000c24]/20 to-transparent flex flex-col justify-end p-3">
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-[#cc0c2f] font-bold">Boutique Hotels · Brussels</span>
+                    <h4 class="text-sm sm:text-base font-serif text-white font-semibold leading-snug">Heritage Suite Architecture</h4>
                   </div>
-                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                      View Fullscreen
-                    </span>
-                  </div>
-                </div>
-                <div class="flex justify-between items-baseline">
-                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Heritage Suite Architecture</h4>
-                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Boutique Hotel (Brussels)</span>
                 </div>
               </div>
 
-              <!-- Card 6: Rooftop Cocktail Lounge (Interior 002) - FEKVŐ (3:2) -->
-              <div data-gallery-cat="bars" data-featured="true" class="gallery-item space-y-3 group cursor-pointer" onclick="openLightbox('penthouse-terrace')">
-                <div class="aspect-[3/2] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative photo-frame">
+              <!-- L3: interior-photo-002 (3:2) -->
+              <div data-gallery-cat="bars" data-orient-type="landscape" class="gallery-item shrink-0 w-[240px] sm:w-[275px] snap-start group cursor-pointer" onclick="openLightbox('penthouse-terrace')">
+                <div class="aspect-[3/2] w-full bg-[#000c24] rounded-none overflow-hidden border border-neutral-300 relative photo-frame shadow-xs">
                   <img
                     src="./portfolio/public/interior-photo-002.jpg"
-                    alt="Atmosphere & Spaces - Interior Photo 2"
+                    alt="Rooftop Cocktail Lounge"
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                     referrerpolicy="no-referrer"
-                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-002.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/Interior-photo-002.jpg'; } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-002.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-002.jpg'; }"
                   />
-                  <div class="hidden text-center p-8 space-y-2 bg-[#1b1c26] text-white">
-                    <div class="font-serif text-xl">Rooftop Cocktail Lounge</div>
-                  </div>
-                  <div class="absolute inset-0 bg-[#001744]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span class="px-5 py-2 bg-white text-[#001744] hover:bg-[#cc0c2f] hover:text-white transition-colors text-xs uppercase font-bold tracking-widest rounded-none shadow-md">
-                      View Fullscreen
-                    </span>
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#000c24]/90 via-[#000c24]/20 to-transparent flex flex-col justify-end p-3">
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-[#cc0c2f] font-bold">Bars &amp; Lounges · Budapest</span>
+                    <h4 class="text-sm sm:text-base font-serif text-white font-semibold leading-snug">Rooftop Cocktail Lounge</h4>
                   </div>
                 </div>
-                <div class="flex justify-between items-baseline">
-                  <h4 class="text-xl font-serif text-[#001744] font-semibold">Rooftop Cocktail Lounge</h4>
-                  <span class="text-xs font-mono font-semibold text-[#cc0c2f]">Twilight Terrace (Budapest)</span>
+              </div>
+
+              <!-- L4: architecture-photo-003 (3:2) -->
+              <div data-gallery-cat="hotels" data-orient-type="landscape" class="gallery-item shrink-0 w-[240px] sm:w-[275px] snap-start group cursor-pointer" onclick="openLightbox('heritage-facade-003')">
+                <div class="aspect-[3/2] w-full bg-[#000c24] rounded-none overflow-hidden border border-neutral-300 relative photo-frame shadow-xs">
+                  <img
+                    src="./portfolio/public/architecture-photo-003.jpg"
+                    alt="Classical Heritage Facade"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/architecture-photo-003.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/architecture-photo-003.jpg'; }"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#000c24]/90 via-[#000c24]/20 to-transparent flex flex-col justify-end p-3">
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-[#cc0c2f] font-bold">Architecture · Vienna</span>
+                    <h4 class="text-sm sm:text-base font-serif text-white font-semibold leading-snug">Classical Heritage Facade</h4>
+                  </div>
+                </div>
+              </div>
+
+              <!-- L5: food-photo-003 (3:2) -->
+              <div data-gallery-cat="gastronomy" data-orient-type="landscape" class="gallery-item shrink-0 w-[240px] sm:w-[275px] snap-start group cursor-pointer" onclick="openLightbox('bistro-table-003')">
+                <div class="aspect-[3/2] w-full bg-[#000c24] rounded-none overflow-hidden border border-neutral-300 relative photo-frame shadow-xs">
+                  <img
+                    src="/food-photo-003.jpg"
+                    alt="Signature Bistro Table"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='./food-photo-003.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='./portfolio/public/food-photo-003.jpg'; }"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#000c24]/90 via-[#000c24]/20 to-transparent flex flex-col justify-end p-3">
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-[#cc0c2f] font-bold">Gastronomy · Vienna</span>
+                    <h4 class="text-sm sm:text-base font-serif text-white font-semibold leading-snug">Signature Bistro Table</h4>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- STRIP 2: PORTRAIT SERIES (Strictly 4:5 Vertical Aspect Ratio) -->
+          <div id="archivePortraitBlock" class="space-y-2.5">
+            <div id="archivePortraitHeader" class="flex items-center justify-between">
+              <div class="text-[11px] uppercase tracking-[0.2em] text-[#001744] font-bold flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-[#cc0c2f]"></span>
+                <span>Portrait Series · 4:5 Editorial &amp; Detail Frames</span>
+              </div>
+              <div class="hidden sm:flex items-center gap-1.5">
+                <button onclick="scrollArchiveRow('archivePortraitRow', -240)" class="w-7 h-7 flex items-center justify-center bg-white border border-neutral-300 text-[#001744] hover:bg-[#001744] hover:text-white transition-colors text-xs" aria-label="Scroll portrait series left">‹</button>
+                <button onclick="scrollArchiveRow('archivePortraitRow', 240)" class="w-7 h-7 flex items-center justify-center bg-white border border-neutral-300 text-[#001744] hover:bg-[#001744] hover:text-white transition-colors text-xs" aria-label="Scroll portrait series right">›</button>
+              </div>
+            </div>
+
+            <div id="archivePortraitRow" class="flex gap-3.5 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-1 scroll-smooth">
+              
+              <!-- P1: interior-photo-004 (4:5) -->
+              <div data-gallery-cat="hotels" data-orient-type="portrait" class="gallery-item shrink-0 w-[165px] sm:w-[195px] snap-start group cursor-pointer" onclick="openLightbox('grand-salon-004')">
+                <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden border border-neutral-300 relative photo-frame shadow-xs">
+                  <img
+                    src="./portfolio/public/interior-photo-004.jpg"
+                    alt="Stately Heritage Residence"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-004.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-004.jpg'; }"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#000c24]/90 via-[#000c24]/20 to-transparent flex flex-col justify-end p-3">
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-[#cc0c2f] font-bold">Suites · Ghent</span>
+                    <h4 class="text-sm font-serif text-white font-semibold leading-snug">Stately Heritage Residence</h4>
+                  </div>
+                </div>
+              </div>
+
+              <!-- P2: food-photo-001 (4:5) -->
+              <div data-gallery-cat="gastronomy" data-orient-type="portrait" class="gallery-item shrink-0 w-[165px] sm:w-[195px] snap-start group cursor-pointer" onclick="openLightbox('artisan-table-setting')">
+                <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden border border-neutral-300 relative photo-frame shadow-xs">
+                  <img
+                    src="./portfolio/public/food-photo-001.jpg"
+                    alt="Signature Gastronomy Staging"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/food-photo-001.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/food-photo-001.jpg'; }"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#000c24]/90 via-[#000c24]/20 to-transparent flex flex-col justify-end p-3">
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-[#cc0c2f] font-bold">Gastronomy · Budapest</span>
+                    <h4 class="text-sm font-serif text-white font-semibold leading-snug">Signature Gastronomy</h4>
+                  </div>
+                </div>
+              </div>
+
+              <!-- P3: interior-photo-001 (4:5) -->
+              <div data-gallery-cat="bars" data-orient-type="portrait" class="gallery-item shrink-0 w-[165px] sm:w-[195px] snap-start group cursor-pointer" onclick="openLightbox('turners-seating')">
+                <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden border border-neutral-300 relative photo-frame shadow-xs">
+                  <img
+                    src="./portfolio/public/interior-photo-001.jpg"
+                    alt="Sunlit Brick Lounge"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/interior-photo-001.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/interior-photo-001.jpg'; }"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#000c24]/90 via-[#000c24]/20 to-transparent flex flex-col justify-end p-3">
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-[#cc0c2f] font-bold">Bars &amp; Lounges · Ghent</span>
+                    <h4 class="text-sm font-serif text-white font-semibold leading-snug">Sunlit Heritage Lounge</h4>
+                  </div>
+                </div>
+              </div>
+
+              <!-- P4: food-photo-002 (4:5) -->
+              <div data-gallery-cat="gastronomy" data-orient-type="portrait" class="gallery-item shrink-0 w-[165px] sm:w-[195px] snap-start group cursor-pointer" onclick="openLightbox('turners-interior')">
+                <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden border border-neutral-300 relative photo-frame shadow-xs">
+                  <img
+                    src="./portfolio/public/food-photo-002.jpg"
+                    alt="Artisan Cafe Bar & Terrace"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/food-photo-002.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/food-photo-002.jpg'; }"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#000c24]/90 via-[#000c24]/20 to-transparent flex flex-col justify-end p-3">
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-[#cc0c2f] font-bold">Gastronomy · Ghent</span>
+                    <h4 class="text-sm font-serif text-white font-semibold leading-snug">Cafe Bar &amp; Terrace</h4>
+                  </div>
+                </div>
+              </div>
+
+              <!-- P5: architecture-photo-002 (4:5) -->
+              <div data-gallery-cat="hotels" data-orient-type="portrait" class="gallery-item shrink-0 w-[165px] sm:w-[195px] snap-start group cursor-pointer" onclick="openLightbox('turners-coffee')">
+                <div class="aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden border border-neutral-300 relative photo-frame shadow-xs">
+                  <img
+                    src="./portfolio/public/architecture-photo-002.jpg"
+                    alt="Heritage Facade Elevation"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                    onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src='/portfolio/public/architecture-photo-002.jpg'; } else if(this.dataset.tried==='1'){ this.dataset.tried='2'; this.src='/architecture-photo-002.jpg'; }"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#000c24]/90 via-[#000c24]/20 to-transparent flex flex-col justify-end p-3">
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-[#cc0c2f] font-bold">Architecture · Brussels</span>
+                    <h4 class="text-sm font-serif text-white font-semibold leading-snug">Heritage Facade</h4>
+                  </div>
                 </div>
               </div>
 
@@ -1048,7 +1080,7 @@
               Operating across <strong>Ghent, Vienna, and Budapest</strong>. Schedule a 15-minute introductory call or submit your project details below.
             </p>
 
-            <!-- Fő CTA gomb (Kiemelt): Book a 15-Min Discovery Call (Külső linkre felkészítve, pl. Calendly / Cal.com) -->
+            <!-- Primary CTA Button: Book a 15-Min Discovery Call -->
             <div class="pt-3 flex justify-center">
               <a
                 href="https://calendly.com/"
@@ -1065,7 +1097,7 @@
               </a>
             </div>
 
-            <!-- 3. Alternatív kontaktok egymás mellett (Letisztult ikonokkal) -->
+            <!-- Alternative Direct Contact Options -->
             <div class="pt-2 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs font-mono font-medium text-[#001744]">
               <a
                 href="https://wa.me/36202689010?text=Hello%20Levente,%20I'd%20like%20to%20discuss%20a%20shoot%20for%20my%20venue."
@@ -1092,7 +1124,7 @@
             </div>
           </div>
 
-          <!-- 4. Az Űrlap (Project Inquiry Form: Kompakt & Letisztult) -->
+          <!-- Project Inquiry Form -->
           <div class="max-w-2xl mx-auto bg-[#f8f9fa] p-6 sm:p-10 rounded-none border border-neutral-300 shadow-md">
             <div class="border-b border-neutral-200 pb-3 mb-6">
               <h3 class="font-serif text-xl sm:text-2xl text-[#001744] font-normal">
@@ -1102,8 +1134,10 @@
             </div>
 
             <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-5">
-              
-              <!-- Mező 1: Name / Brand -->
+              <!-- Honeypot anti-spam field -->
+              <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+
+              <!-- Field 1: Name / Brand -->
               <div class="space-y-1.5">
                 <label for="formName" class="text-xs uppercase tracking-widest font-bold text-[#001744] block">
                   Name / Brand <span class="text-[#cc0c2f]">*</span>
@@ -1118,7 +1152,22 @@
                 />
               </div>
 
-              <!-- Mező 2: Project Location (City / Country) – Kötelező mező! -->
+              <!-- Field 2: Client Email (Reply-To) -->
+              <div class="space-y-1.5">
+                <label for="formEmail" class="text-xs uppercase tracking-widest font-bold text-[#001744] block">
+                  Your Email <span class="text-[#cc0c2f]">*</span>
+                </label>
+                <input
+                  id="formEmail"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="e.g. alexander@grandheritage.com"
+                  class="w-full px-4 py-3 bg-white border border-neutral-300 focus:border-[#001744] focus:ring-1 focus:ring-[#001744] focus:outline-none text-base sm:text-sm text-[#001744] rounded-none transition-colors"
+                />
+              </div>
+
+              <!-- Field 3: Project Location -->
               <div class="space-y-1.5">
                 <label for="formLocation" class="text-xs uppercase tracking-widest font-bold text-[#001744] block">
                   Project Location (City / Country) <span class="text-[#cc0c2f]">*</span>
@@ -1133,7 +1182,7 @@
                 />
               </div>
 
-              <!-- Mező 3: Brief description of the project -->
+              <!-- Field 4: Brief description -->
               <div class="space-y-1.5">
                 <label for="formDescription" class="text-xs uppercase tracking-widest font-bold text-[#001744] block">
                   Brief description of the project
@@ -1147,22 +1196,43 @@
                 ></textarea>
               </div>
 
-              <!-- Mező 4: Send Inquiry gomb -->
+              <!-- Error / Direct Email Fallback Box -->
+              <div id="formError" class="hidden p-4 bg-[#cc0c2f]/10 border border-[#cc0c2f]/30 text-xs text-[#001744] space-y-2">
+                <p class="font-semibold text-[#cc0c2f]">Could not send automatically right now.</p>
+                <p class="text-neutral-700">You can still deliver this exact inquiry directly via your email app or WhatsApp:</p>
+                <a
+                  id="formMailtoFallback"
+                  href="mailto:sinka.levente.photography@gmail.com"
+                  class="inline-flex items-center gap-2 px-4 py-2 bg-[#001744] text-white font-bold uppercase tracking-wider text-[11px] hover:bg-[#cc0c2f] transition-colors"
+                >
+                  Open Pre-filled Email →
+                </a>
+              </div>
+
+              <!-- Field 5: Submit Button -->
               <button
+                id="formSubmitBtn"
                 type="submit"
-                class="w-full py-4 text-xs font-bold tracking-widest uppercase text-white bg-[#001744] hover:bg-[#cc0c2f] active:scale-[0.99] transition-all rounded-none shadow-sm flex items-center justify-center gap-2"
+                class="w-full py-4 text-xs font-bold tracking-widest uppercase text-white bg-[#001744] hover:bg-[#cc0c2f] disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.99] transition-all rounded-none shadow-sm flex items-center justify-center gap-2"
               >
-                <span>Send Inquiry</span>
-                <span>→</span>
+                <span id="formSubmitText">Send Inquiry</span>
+                <span id="formSubmitArrow">→</span>
               </button>
             </form>
 
-            <div id="contactSuccess" class="hidden text-center py-8 space-y-3">
+            <div id="contactSuccess" class="hidden text-center py-8 space-y-4">
               <div class="text-3xl font-serif text-[#cc0c2f]">Thank You</div>
               <h3 class="text-xl font-serif font-bold text-[#001744]">Inquiry Sent Successfully</h3>
               <p class="text-xs text-neutral-600 max-w-md mx-auto">
-                We have received your briefing. Levente will respond with a tailored proposal within 24 hours.
+                Your inquiry has been delivered directly to Levente (<span class="font-mono text-[#001744]">sinka.levente.photography@gmail.com</span>). You will receive a tailored response within 24 hours.
               </p>
+              <button
+                type="button"
+                onclick="resetContactForm()"
+                class="inline-flex items-center justify-center px-5 py-2 text-[11px] font-bold uppercase tracking-widest text-[#001744] border border-neutral-300 hover:border-[#001744] bg-white transition-colors rounded-none"
+              >
+                Send Another Inquiry
+              </button>
             </div>
 
           </div>
@@ -1266,7 +1336,7 @@
 
         </div>
 
-        <!-- Sub-footer (Alsó sáv) -->
+        <!-- Sub-footer -->
         <div class="border-t border-neutral-800 pt-8 mt-10 sm:mt-12 text-center sm:text-left">
           <p class="text-xs text-neutral-400 font-sans tracking-normal">
             © 2026 SL Photography. All rights reserved.
@@ -1376,50 +1446,142 @@
         });
       }
 
-      // 2. Category Filter for Portfolio (Tommy Segmented Control)
-      function filterGallery(cat) {
-        const buttons = document.querySelectorAll('.cat-btn');
-        buttons.forEach(btn => {
-          if (btn.getAttribute('data-cat') === cat) {
-            btn.className = 'cat-btn shrink-0 px-3.5 sm:px-4 py-2 sm:py-2.5 font-bold tracking-wider uppercase transition-colors bg-[#001744] text-white rounded-none';
+      // 2. Category & Orientation Filter for Portfolio Archive (Strictly Unmixed Landscape & Portrait)
+      let currentArchiveCat = 'all';
+      let currentArchiveOrient = 'all';
+
+      function scrollArchiveRow(rowId, delta) {
+        const row = document.getElementById(rowId);
+        if (row) row.scrollBy({ left: delta, behavior: 'smooth' });
+      }
+
+      function filterOrientation(orient) {
+        currentArchiveOrient = orient;
+        document.querySelectorAll('.orient-btn').forEach(btn => {
+          if (btn.getAttribute('data-orient') === orient) {
+            btn.className = 'orient-btn px-3 py-1.5 font-bold tracking-wider uppercase transition-colors bg-[#001744] text-white rounded-none';
           } else {
-            btn.className = 'cat-btn shrink-0 px-3.5 sm:px-4 py-2 sm:py-2.5 font-bold tracking-wider uppercase transition-colors text-neutral-700 hover:text-[#001744] rounded-none';
+            btn.className = 'orient-btn px-3 py-1.5 font-bold tracking-wider uppercase transition-colors text-neutral-600 hover:text-[#001744] rounded-none';
           }
         });
+        applyArchiveFilters();
+      }
 
-        const items = document.querySelectorAll('.gallery-item');
+      function filterGallery(cat) {
+        currentArchiveCat = cat;
+        document.querySelectorAll('.cat-btn').forEach(btn => {
+          if (btn.getAttribute('data-cat') === cat) {
+            btn.className = 'cat-btn shrink-0 px-3 py-1.5 font-bold tracking-wider uppercase transition-colors bg-[#001744] text-white rounded-none';
+          } else {
+            btn.className = 'cat-btn shrink-0 px-3 py-1.5 font-bold tracking-wider uppercase transition-colors text-neutral-600 hover:text-[#001744] rounded-none';
+          }
+        });
+        applyArchiveFilters();
+      }
+
+      function applyArchiveFilters() {
         let visiblePortrait = 0;
         let visibleLandscape = 0;
 
-        items.forEach(item => {
+        document.querySelectorAll('#portfolio .gallery-item').forEach(item => {
           const itemCat = item.getAttribute('data-gallery-cat');
-          const isFeatured = item.getAttribute('data-featured') === 'true';
-          const matches = (cat === 'all') ? isFeatured : (itemCat === cat);
+          const itemOrient = item.getAttribute('data-orient-type');
+          const catMatch = (currentArchiveCat === 'all') || (itemCat === currentArchiveCat);
+          const orientMatch = (currentArchiveOrient === 'all') || (itemOrient === currentArchiveOrient);
 
-          if (matches) {
+          if (catMatch && orientMatch) {
             item.classList.remove('hidden');
-            if (item.closest('#archivePortraitRow')) visiblePortrait++;
-            if (item.closest('#archiveLandscapeRow')) visibleLandscape++;
+            if (itemOrient === 'portrait') visiblePortrait++;
+            if (itemOrient === 'landscape') visibleLandscape++;
           } else {
             item.classList.add('hidden');
           }
         });
 
-        const pSection = document.getElementById('archivePortraitHeader')?.parentElement;
-        const lSection = document.getElementById('archiveLandscapeHeader')?.parentElement;
-        if (pSection) pSection.style.display = (visiblePortrait > 0) ? '' : 'none';
-        if (lSection) lSection.style.display = (visibleLandscape > 0) ? '' : 'none';
+        const lBlock = document.getElementById('archiveLandscapeBlock');
+        const pBlock = document.getElementById('archivePortraitBlock');
+        if (lBlock) lBlock.style.display = (visibleLandscape > 0) ? '' : 'none';
+        if (pBlock) pBlock.style.display = (visiblePortrait > 0) ? '' : 'none';
       }
 
-      // 4. Contact Form Handling
-      function handleContactSubmit(e) {
+      // 4. Contact Form Handling (Direct Email Delivery via FormSubmit AJAX + Mailto Fallback)
+      async function handleContactSubmit(e) {
         e.preventDefault();
         const form = document.getElementById('contactForm');
         const success = document.getElementById('contactSuccess');
-        if (form && success) {
-          form.classList.add('hidden');
-          success.classList.remove('hidden');
+        const errorBox = document.getElementById('formError');
+        const submitBtn = document.getElementById('formSubmitBtn');
+        const submitText = document.getElementById('formSubmitText');
+        const submitArrow = document.getElementById('formSubmitArrow');
+        const mailtoFallback = document.getElementById('formMailtoFallback');
+
+        if (!form) return;
+
+        const name = (document.getElementById('formName')?.value || '').trim();
+        const email = (document.getElementById('formEmail')?.value || '').trim();
+        const location = (document.getElementById('formLocation')?.value || '').trim();
+        const description = (document.getElementById('formDescription')?.value || '').trim();
+        const honey = form.querySelector('input[name="_honey"]')?.value || '';
+
+        if (honey) return; // Spam protection
+
+        if (errorBox) errorBox.classList.add('hidden');
+        if (submitBtn) submitBtn.disabled = true;
+        if (submitText) submitText.textContent = 'Sending Inquiry...';
+        if (submitArrow) submitArrow.textContent = '';
+
+        // Prepare direct mailto fallback URI with all fields prefilled
+        const subject = encodeURIComponent(`New SL Photography Inquiry: ${name} (${location})`);
+        const body = encodeURIComponent(
+          `Name / Brand: ${name}\nClient Email: ${email}\nLocation: ${location}\n\nProject Details:\n${description || 'N/A'}`
+        );
+        if (mailtoFallback) {
+          mailtoFallback.href = `mailto:sinka.levente.photography@gmail.com?subject=${subject}&body=${body}`;
         }
+
+        try {
+          const response = await fetch('https://formsubmit.co/ajax/sinka.levente.photography@gmail.com', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              'Name / Brand': name,
+              'Client Email': email,
+              _replyto: email,
+              'Project Location': location,
+              'Project Description': description || 'No additional description provided.',
+              _subject: `New SL Photography Inquiry: ${name} (${location})`,
+              _template: 'table',
+              _captcha: 'false'
+            })
+          });
+
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok || data.success === 'false' || data.success === false) {
+            throw new Error(data.message || 'Submission failed');
+          }
+
+          form.reset();
+          form.classList.add('hidden');
+          if (success) success.classList.remove('hidden');
+        } catch (err) {
+          if (errorBox) errorBox.classList.remove('hidden');
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+          if (submitText) submitText.textContent = 'Send Inquiry';
+          if (submitArrow) submitArrow.textContent = '→';
+        }
+      }
+
+      function resetContactForm() {
+        const form = document.getElementById('contactForm');
+        const success = document.getElementById('contactSuccess');
+        const errorBox = document.getElementById('formError');
+        if (success) success.classList.add('hidden');
+        if (errorBox) errorBox.classList.add('hidden');
+        if (form) form.classList.remove('hidden');
       }
 
       // 5. Fullscreen Lightbox Data & Controls
@@ -1456,30 +1618,6 @@
           aspect: "4:5",
           image: "./portfolio/public/photo_of_myself.jpg"
         },
-        'grand-salon-004': {
-          title: "Stately Heritage Residence",
-          category: "Boutique Hotels",
-          specs: "24mm Tilt-Shift · f/4.0 · High Ceilings & Natural Window Light",
-          desc: "Vertical architectural capture showcasing high ceilings, grand arched windows, and authentic heritage styling in Ghent.",
-          aspect: "4:5",
-          image: "./portfolio/public/interior-photo-004.jpg"
-        },
-        'artisan-table-setting': {
-          title: "Signature Gastronomy Atmosphere",
-          category: "Gastronomy",
-          specs: "50mm Prime · f/1.8 · Warm Ambient Candlelight & Rim",
-          desc: "Sensory dining capture showcasing fine culinary artistry, premium tableware, and intimate evening ambiance in Budapest.",
-          aspect: "4:5",
-          image: "./portfolio/public/food-photo-001.jpg"
-        },
-        'turners-seating': {
-          title: "Sunlit Brick Corner & Armchair",
-          category: "Bars & Terraces",
-          specs: "24mm Tilt-Shift · f/4.0 · Natural Day Window Light",
-          desc: "Atmospheric corner shot highlighting natural sunlight filtering through the street-side window onto the exposed brickwork and velvet armchairs.",
-          aspect: "4:5",
-          image: "./portfolio/public/interior-photo-001.jpg"
-        },
         'grand-suite-interior': {
           title: "Luxury Boutique Residence",
           category: "Boutique Hotels",
@@ -1489,7 +1627,7 @@
           image: "./portfolio/public/interior-photo-003.jpg"
         },
         'boutique-suite': {
-          title: "Heritage Hotel Palace Suite",
+          title: "Heritage Suite Architecture",
           category: "Boutique Hotels",
           specs: "16-35mm · f/4.0 · Balanced Sconce & Daylight",
           desc: "Staged guestroom suite photography highlighting rich walnut woodwork, crisp linen textures, and ambient lighting in Brussels.",
@@ -1497,23 +1635,63 @@
           image: "./portfolio/public/interior-photo-005.jpg"
         },
         'penthouse-terrace': {
-          title: "Rooftop Cocktail Lounge & Fire Pit",
-          category: "Bars & Terraces",
+          title: "Rooftop Cocktail Lounge",
+          category: "Bars & Lounges",
           specs: "20mm Ultra-Wide · f/5.6 · Twilight Blue Hour Exposure",
           desc: "Twilight hospitality capture of a luxury hotel rooftop terrace featuring an illuminated fire pit, evening guests, and city vistas in Budapest.",
           aspect: "3:2",
           image: "./portfolio/public/interior-photo-002.jpg"
         },
+        'heritage-facade-003': {
+          title: "Classical Heritage Facade",
+          category: "Boutique Hotels",
+          specs: "24mm Tilt-Shift · f/5.6 · Golden Hour Elevation",
+          desc: "Stately architectural facade capture highlighting neoclassical proportions and warm evening stonework in Vienna.",
+          aspect: "3:2",
+          image: "./portfolio/public/architecture-photo-003.jpg"
+        },
+        'bistro-table-003': {
+          title: "Signature Bistro Table",
+          category: "Gastronomy",
+          specs: "50mm Prime · f/2.0 · Natural Dining Room Light",
+          desc: "Editorial dining capture balancing ambient glassware reflections and artisanal plated textures in Vienna.",
+          aspect: "3:2",
+          image: "/food-photo-003.jpg"
+        },
+        'grand-salon-004': {
+          title: "Stately Heritage Residence",
+          category: "Boutique Hotels",
+          specs: "24mm Tilt-Shift · f/4.0 · High Ceilings & Natural Window Light",
+          desc: "Vertical architectural capture showcasing high ceilings, grand arched windows, and authentic heritage styling in Ghent.",
+          aspect: "4:5",
+          image: "./portfolio/public/interior-photo-004.jpg"
+        },
+        'artisan-table-setting': {
+          title: "Signature Gastronomy",
+          category: "Gastronomy",
+          specs: "50mm Prime · f/1.8 · Warm Ambient Candlelight & Rim",
+          desc: "Sensory dining capture showcasing fine culinary artistry, premium tableware, and intimate evening ambiance in Budapest.",
+          aspect: "4:5",
+          image: "./portfolio/public/food-photo-001.jpg"
+        },
+        'turners-seating': {
+          title: "Sunlit Heritage Lounge",
+          category: "Bars & Lounges",
+          specs: "24mm Tilt-Shift · f/4.0 · Natural Day Window Light",
+          desc: "Atmospheric corner shot highlighting natural sunlight filtering through the street-side window onto the exposed brickwork and velvet armchairs.",
+          aspect: "4:5",
+          image: "./portfolio/public/interior-photo-001.jpg"
+        },
         'turners-interior': {
-          title: "Turner's Cafe Bar & Terrace",
+          title: "Cafe Bar & Terrace",
           category: "Gastronomy",
           specs: "ARRI / Sony FX6 · 35mm Prime · f/1.8 · Natural Ambient & Bounce",
-          desc: "Hospitality interior shoot for Turner's Cafe Bar. Emphasizing the brick archways, custom orange velvet seating, and warm globe pendant fixtures.",
+          desc: "Hospitality interior shoot emphasizing brick archways, custom velvet seating, and warm globe pendant fixtures.",
           aspect: "4:5",
           image: "./portfolio/public/food-photo-002.jpg"
         },
         'turners-coffee': {
-          title: "Heritage Architecture & Elevation",
+          title: "Heritage Facade",
           category: "Boutique Hotels",
           specs: "24mm Tilt-Shift · f/5.6 · 1/125s · Natural Golden Hour Elevation",
           desc: "Architectural and facade capture emphasizing stately classical design, clean geometric lines, and prestigious hospitality presence.",
