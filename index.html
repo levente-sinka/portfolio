@@ -82,14 +82,53 @@
       /* Subtle Viewport Fade-In Animation for Landing Page Sections */
       .fade-in-section {
         opacity: 0;
-        transform: translateY(22px);
-        transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(20px);
+        transition: opacity 1.05s cubic-bezier(0.22, 1, 0.36, 1), transform 1.05s cubic-bezier(0.22, 1, 0.36, 1);
         will-change: opacity, transform;
       }
       .fade-in-section.is-visible {
         opacity: 1;
         transform: translateY(0);
       }
+
+      /* Lightweight Pure-CSS Scroll Reveal for Images & Large Text Blocks */
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1), transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: opacity, transform;
+      }
+      .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
+
+      /* Minimal, Elegant Hover Effect for Clickable Buttons & CTA Links */
+      button,
+      .editorial-btn {
+        transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.28s ease, color 0.28s ease, border-color 0.28s ease, box-shadow 0.32s ease, opacity 0.28s ease;
+      }
+      @media (hover: hover) {
+        button:not(:disabled):not([aria-label="Close Lightbox"]):not(#mobileNavToggle):hover,
+        .editorial-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 18px rgba(0, 23, 68, 0.1);
+        }
+        button:not(:disabled):not([aria-label="Close Lightbox"]):not(#mobileNavToggle):active,
+        .editorial-btn:active {
+          transform: translateY(0) scale(0.985);
+        }
+      }
+
       /* Hide scrollbar for horizontal category filter on mobile */
       .no-scrollbar::-webkit-scrollbar, .hide-scrollbar::-webkit-scrollbar {
         display: none;
@@ -107,10 +146,12 @@
         padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
       }
       @media (prefers-reduced-motion: reduce) {
-        .fade-in-section {
+        .fade-in-section,
+        .reveal-on-scroll {
           opacity: 1 !important;
           transform: none !important;
           transition: none !important;
+          transition-delay: 0s !important;
         }
       }
 
@@ -181,7 +222,7 @@
         <div class="flex items-center gap-2 sm:gap-3 shrink-0">
           <a
             href="tel:+36202689010"
-            class="hidden lg:inline-flex items-center gap-2 px-3.5 py-2.5 text-xs font-semibold tracking-wider text-[#001744] border border-neutral-300 hover:border-[#001744] hover:bg-neutral-50 transition-all rounded-none whitespace-nowrap"
+            class="editorial-btn hidden lg:inline-flex items-center gap-2 px-3.5 py-2.5 text-xs font-semibold tracking-wider text-[#001744] border border-neutral-300 hover:border-[#001744] hover:bg-neutral-50 transition-all rounded-none whitespace-nowrap"
             title="Instant phone call"
           >
             <svg class="w-3.5 h-3.5 text-[#cc0c2f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -192,7 +233,7 @@
 
           <a
             href="#contact"
-            class="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 text-[11px] sm:text-xs font-bold tracking-widest uppercase text-white bg-[#001744] hover:bg-[#cc0c2f] active:scale-[0.98] transition-all rounded-none shadow-sm whitespace-nowrap"
+            class="editorial-btn inline-flex items-center justify-center px-4 sm:px-6 py-2.5 text-[11px] sm:text-xs font-bold tracking-widest uppercase text-white bg-[#001744] hover:bg-[#cc0c2f] active:scale-[0.98] transition-all rounded-none shadow-sm whitespace-nowrap"
           >
             Inquire
           </a>
@@ -238,7 +279,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             <!-- Left Editorial Text -->
-            <div class="lg:col-span-7 space-y-5 sm:space-y-7">
+            <div class="lg:col-span-7 space-y-5 sm:space-y-7 reveal-on-scroll">
               <div class="inline-flex flex-wrap items-center gap-2 text-[11px] sm:text-xs tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#001744] font-bold">
                 <span class="w-2 h-2 bg-[#cc0c2f] shrink-0"></span>
                 <span>Hospitality &amp; Real Estate Visuals</span>
@@ -258,7 +299,7 @@
               <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                 <a
                   href="#contact"
-                  class="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 text-xs font-bold tracking-widest uppercase text-white bg-[#001744] hover:bg-[#cc0c2f] active:scale-[0.98] transition-all rounded-none shadow-sm text-center"
+                  class="editorial-btn w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 text-xs font-bold tracking-widest uppercase text-white bg-[#001744] hover:bg-[#cc0c2f] active:scale-[0.98] transition-all rounded-none shadow-sm text-center"
                 >
                   Claim a 45-Min Pilot Shoot
                 </a>
@@ -267,7 +308,7 @@
                   href="https://wa.me/36202689010?text=Hello%20Levente,%20I'm%20interested%20in%20a%20pilot%20shoot%20for%20my%20venue."
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center gap-2.5 px-7 py-4 text-xs font-bold tracking-widest uppercase text-[#001744] bg-white border-2 border-[#001744] hover:bg-[#001744] hover:text-white active:scale-[0.98] transition-all rounded-none text-center shadow-2xs"
+                  class="editorial-btn inline-flex items-center justify-center gap-2.5 px-7 py-4 text-xs font-bold tracking-widest uppercase text-[#001744] bg-white border-2 border-[#001744] hover:bg-[#001744] hover:text-white active:scale-[0.98] transition-all rounded-none text-center shadow-2xs"
                 >
                   <svg class="w-4 h-4 text-[#25D366] shrink-0" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.35.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.19-.174.289-.087.1-.183.222-.261.299-.087.087-.179.182-.077.357.101.174.449.741.964 1.2 1.006.896 1.488.987 1.705 1.074.217.087.346.072.476-.072.13-.145.563-.655.714-.88.151-.225.302-.188.508-.112.206.075 1.309.617 1.533.729.224.112.373.167.428.261.055.094.055.547-.089.952z"/>
@@ -279,7 +320,7 @@
             </div>
 
             <!-- Right Showcase Frame (4:5 Container with User-Specified Video) -->
-            <div class="lg:col-span-5 flex justify-center w-full">
+            <div class="lg:col-span-5 flex justify-center w-full reveal-on-scroll reveal-delay-1">
               <div class="relative w-full max-w-md p-2.5 sm:p-3 bg-white shadow-xl rounded-xl border border-neutral-300 photo-frame group cursor-pointer" onclick="openLightbox('drink-video-001')">
                 
                 <!-- 4:5 Aspect Ratio Container with h-auto and clean visual framing -->
@@ -320,7 +361,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-10 sm:space-y-12">
           
           <!-- Heading with Tommy Signature Ribbon Accent -->
-          <div class="text-center space-y-3">
+          <div class="text-center space-y-3 reveal-on-scroll">
             <div class="text-xs tracking-[0.25em] uppercase font-bold text-[#cc0c2f]">
               Curated Hospitality Portfolios
             </div>
@@ -333,7 +374,7 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
             
             <!-- Item 1: Interiors & Design -->
-            <div class="space-y-4 group cursor-pointer" onclick="openLightbox('turners-interior')">
+            <div class="space-y-4 group cursor-pointer reveal-on-scroll" onclick="openLightbox('turners-interior')">
               <div class="photo-frame aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative">
                 
                 <!-- Primary Image Asset requested by user -->
@@ -385,7 +426,7 @@
             </div>
 
             <!-- Item 2: Gastronomy & Details -->
-            <div class="space-y-4 group cursor-pointer" onclick="openLightbox('turners-coffee')">
+            <div class="space-y-4 group cursor-pointer reveal-on-scroll reveal-delay-1" onclick="openLightbox('turners-coffee')">
               <div class="photo-frame aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative">
                 
                 <!-- Primary Image Asset requested by user -->
@@ -439,7 +480,7 @@
             </div>
 
             <!-- Item 3: Atmosphere & Spaces -->
-            <div class="space-y-4 group cursor-pointer" onclick="openLightbox('turners-seating')">
+            <div class="space-y-4 group cursor-pointer reveal-on-scroll reveal-delay-2" onclick="openLightbox('turners-seating')">
               <div class="photo-frame aspect-[4/5] w-full bg-[#000c24] rounded-none overflow-hidden shadow-sm border border-neutral-300 relative">
                 
                 <!-- Primary Image Asset requested by user -->
@@ -510,7 +551,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             <!-- Left Column: Editorial Portrait in Tommy Architectural Frame -->
-            <div class="lg:col-span-5 flex justify-center">
+            <div class="lg:col-span-5 flex justify-center reveal-on-scroll">
               <div class="relative w-full max-w-md p-3 sm:p-4 bg-white shadow-xl rounded-none border border-neutral-300 photo-frame group cursor-pointer" onclick="openLightbox('about-portrait')">
                 <div class="aspect-[4/5] w-full rounded-none overflow-hidden relative bg-[#000c24]">
                   
@@ -565,7 +606,7 @@
             </div>
 
             <!-- Right Column: Editorial Bio & Credentials -->
-            <div class="lg:col-span-7 space-y-6">
+            <div class="lg:col-span-7 space-y-6 reveal-on-scroll reveal-delay-1">
               <div class="inline-flex items-center gap-2.5 text-xs tracking-[0.25em] uppercase text-[#001744] font-bold">
                 <span class="w-2 h-2 bg-[#cc0c2f]"></span>
                 <span>About the Creator</span>
@@ -612,7 +653,7 @@
                 <div class="flex items-center gap-3">
                   <a
                     href="#contact"
-                    class="inline-flex items-center justify-center px-7 py-3.5 text-xs font-bold tracking-widest uppercase text-white bg-[#001744] hover:bg-[#cc0c2f] active:scale-[0.98] transition-all rounded-none shadow-sm"
+                    class="editorial-btn inline-flex items-center justify-center px-7 py-3.5 text-xs font-bold tracking-widest uppercase text-white bg-[#001744] hover:bg-[#cc0c2f] active:scale-[0.98] transition-all rounded-none shadow-sm"
                   >
                     Discuss a Project
                   </a>
@@ -620,7 +661,7 @@
                     href="https://wa.me/36202689010?text=Hello%20Levente,%20I'd%20like%20to%20discuss%20a%20shoot%20for%20my%20property."
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-5 py-3.5 text-xs font-bold uppercase tracking-wider text-[#001744] border-2 border-[#001744] hover:bg-[#001744] hover:text-white transition-colors rounded-none"
+                    class="editorial-btn inline-flex items-center gap-2 px-5 py-3.5 text-xs font-bold uppercase tracking-wider text-[#001744] border-2 border-[#001744] hover:bg-[#001744] hover:text-white transition-colors rounded-none"
                   >
                     <span>WhatsApp</span>
                   </a>
@@ -642,7 +683,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 space-y-12 sm:space-y-16">
           
           <!-- Section Heading -->
-          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-neutral-800 pb-8">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-neutral-800 pb-8 reveal-on-scroll">
             <div class="space-y-3">
               <div class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#cc0c2f] font-bold">
                 <span class="w-2 h-2 bg-[#cc0c2f] rounded-full animate-ping"></span>
@@ -661,7 +702,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 max-w-3xl mx-auto py-2">
             
             <!-- Video 1: video-002.mov in Sleek Smartphone Frame -->
-            <div class="flex flex-col items-center space-y-5">
+            <div class="flex flex-col items-center space-y-5 reveal-on-scroll">
               <div 
                 class="relative w-full max-w-[270px] sm:max-w-[290px] p-3 sm:p-3.5 bg-gradient-to-b from-[#1c2738] via-[#000c24] to-[#001744] rounded-[44px] border-2 border-neutral-600/70 shadow-2xl shadow-black/80 ring-1 ring-white/10 group cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-[#cc0c2f]/25"
                 onclick="openLightbox('video-002')"
@@ -726,7 +767,7 @@
             </div>
 
             <!-- Video 2: video-003.mov in Sleek Smartphone Frame -->
-            <div class="flex flex-col items-center space-y-5">
+            <div class="flex flex-col items-center space-y-5 reveal-on-scroll reveal-delay-1">
               <div 
                 class="relative w-full max-w-[270px] sm:max-w-[290px] p-3 sm:p-3.5 bg-gradient-to-b from-[#1c2738] via-[#000c24] to-[#001744] rounded-[44px] border-2 border-neutral-600/70 shadow-2xl shadow-black/80 ring-1 ring-white/10 group cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-[#cc0c2f]/25"
                 onclick="openLightbox('video-003')"
@@ -800,7 +841,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-7">
           
           <!-- Compact Header & Unified Category + Format Filter Toolbar -->
-          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-neutral-200 pb-5">
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-neutral-200 pb-5 reveal-on-scroll">
             <div class="space-y-1.5">
               <div class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-[#cc0c2f] font-bold">
                 <span class="w-1.5 h-1.5 bg-[#cc0c2f]"></span>
@@ -811,19 +852,19 @@
               </h2>
             </div>
 
-            <!-- Dual Filter Controls: Orientation Switcher & Category Filter -->
+            <!-- Dual Filter Controls: Collection Switcher & Category Filter -->
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
               
-              <!-- Orientation Format Tabs (Prevents any mixing) -->
+              <!-- Collection Format Tabs -->
               <div class="inline-flex items-center p-1 bg-white border border-neutral-300 rounded-none text-[11px] shrink-0">
                 <button onclick="filterOrientation('all')" data-orient="all" class="orient-btn px-3 py-1.5 font-bold tracking-wider uppercase transition-colors bg-[#001744] text-white rounded-none">
-                  All Formats
+                  All Collections
                 </button>
                 <button onclick="filterOrientation('landscape')" data-orient="landscape" class="orient-btn px-3 py-1.5 font-bold tracking-wider uppercase transition-colors text-neutral-600 hover:text-[#001744] rounded-none">
-                  Landscape
+                  Website &amp; Brand
                 </button>
                 <button onclick="filterOrientation('portrait')" data-orient="portrait" class="orient-btn px-3 py-1.5 font-bold tracking-wider uppercase transition-colors text-neutral-600 hover:text-[#001744] rounded-none">
-                  Portrait
+                  Social Media
                 </button>
               </div>
 
@@ -848,12 +889,12 @@
             </div>
           </div>
 
-          <!-- STRIP 1: LANDSCAPE SERIES (Strictly 3:2 Horizontal Aspect Ratio) -->
-          <div id="archiveLandscapeBlock" class="space-y-2.5">
+          <!-- STRIP 1: WEBSITE & BRAND IMAGERY -->
+          <div id="archiveLandscapeBlock" class="space-y-2.5 reveal-on-scroll">
             <div id="archiveLandscapeHeader" class="flex items-center justify-between">
               <div class="text-[11px] uppercase tracking-[0.2em] text-[#001744] font-bold flex items-center gap-2">
                 <span class="w-1.5 h-1.5 bg-[#001744]"></span>
-                <span>Landscape Series · 3:2 Architectural &amp; Interior Frames</span>
+                <span>Website &amp; Brand Imagery</span>
               </div>
               <div class="hidden sm:flex items-center gap-1.5">
                 <button onclick="scrollArchiveRow('archiveLandscapeRow', -300)" class="w-7 h-7 flex items-center justify-center bg-white border border-neutral-300 text-[#001744] hover:bg-[#001744] hover:text-white transition-colors text-xs" aria-label="Scroll landscape series left">‹</button>
@@ -936,12 +977,12 @@
             </div>
           </div>
 
-          <!-- STRIP 2: PORTRAIT SERIES (Strictly 4:5 Vertical Aspect Ratio) -->
-          <div id="archivePortraitBlock" class="space-y-2.5">
+          <!-- STRIP 2: SOCIAL MEDIA & CAMPAIGN ASSETS -->
+          <div id="archivePortraitBlock" class="space-y-2.5 reveal-on-scroll reveal-delay-1">
             <div id="archivePortraitHeader" class="flex items-center justify-between">
               <div class="text-[11px] uppercase tracking-[0.2em] text-[#001744] font-bold flex items-center gap-2">
                 <span class="w-1.5 h-1.5 bg-[#cc0c2f]"></span>
-                <span>Portrait Series · 4:5 Editorial &amp; Detail Frames</span>
+                <span>Social Media &amp; Campaign Assets</span>
               </div>
               <div class="hidden sm:flex items-center gap-1.5">
                 <button onclick="scrollArchiveRow('archivePortraitRow', -240)" class="w-7 h-7 flex items-center justify-center bg-white border border-neutral-300 text-[#001744] hover:bg-[#001744] hover:text-white transition-colors text-xs" aria-label="Scroll portrait series left">‹</button>
@@ -1031,7 +1072,7 @@
       <section id="contact" class="py-20 border-b border-neutral-200 bg-white fade-in-section">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
           
-          <div class="text-center space-y-4 mb-10">
+          <div class="text-center space-y-4 mb-10 reveal-on-scroll">
             <div class="text-xs uppercase tracking-[0.25em] text-[#cc0c2f] font-bold">Direct Booking &amp; Inquiry</div>
             <h2 class="text-3xl sm:text-5xl font-serif text-[#001744] font-normal">
               Request a Hospitality Proposal
@@ -1046,7 +1087,7 @@
                 href="https://calendly.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 text-xs font-bold tracking-widest uppercase text-white bg-[#001744] hover:bg-[#cc0c2f] active:scale-[0.98] transition-all rounded-none shadow-md text-center group"
+                class="editorial-btn inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 text-xs font-bold tracking-widest uppercase text-white bg-[#001744] hover:bg-[#cc0c2f] active:scale-[0.98] transition-all rounded-none shadow-md text-center group"
                 title="Book a 15-Min Discovery Call"
               >
                 <svg class="w-4 h-4 text-[#cc0c2f] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1063,7 +1104,7 @@
                 href="https://wa.me/36202689010?text=Hello%20Levente,%20I'd%20like%20to%20discuss%20a%20shoot%20for%20my%20venue."
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2.5 px-4 py-2.5 bg-white border border-neutral-300 hover:border-[#001744] hover:bg-neutral-50 transition-colors rounded-none shadow-2xs"
+                class="editorial-btn inline-flex items-center gap-2.5 px-4 py-2.5 bg-white border border-neutral-300 hover:border-[#001744] hover:bg-neutral-50 transition-colors rounded-none shadow-2xs"
               >
                 <svg class="w-4 h-4 text-[#25D366] shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.35.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.19-.174.289-.087.1-.183.222-.261.299-.087.087-.179.182-.077.357.101.174.449.741.964 1.2 1.006.896 1.488.987 1.705 1.074.217.087.346.072.476-.072.13-.145.563-.655.714-.88.151-.225.302-.188.508-.112.206.075 1.309.617 1.533.729.224.112.373.167.428.261.055.094.055.547-.089.952z"/>
@@ -1074,7 +1115,7 @@
 
               <a
                 href="mailto:sinka.levente.photography@gmail.com"
-                class="inline-flex items-center gap-2.5 px-4 py-2.5 bg-white border border-neutral-300 hover:border-[#001744] hover:bg-neutral-50 transition-colors rounded-none shadow-2xs"
+                class="editorial-btn inline-flex items-center gap-2.5 px-4 py-2.5 bg-white border border-neutral-300 hover:border-[#001744] hover:bg-neutral-50 transition-colors rounded-none shadow-2xs"
               >
                 <svg class="w-4 h-4 text-[#cc0c2f] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -1085,7 +1126,7 @@
           </div>
 
           <!-- Project Inquiry Form -->
-          <div class="max-w-2xl mx-auto bg-[#f8f9fa] p-6 sm:p-10 rounded-none border border-neutral-300 shadow-md">
+          <div class="max-w-2xl mx-auto bg-[#f8f9fa] p-6 sm:p-10 rounded-none border border-neutral-300 shadow-md reveal-on-scroll reveal-delay-1">
             <div class="border-b border-neutral-200 pb-3 mb-6">
               <h3 class="font-serif text-xl sm:text-2xl text-[#001744] font-normal">
                 Project Inquiry Form
@@ -1678,6 +1719,7 @@
             <img
               src="${item.image}"
               alt="${item.title}"
+              loading="lazy"
               class="w-full h-full object-cover rounded-none"
               onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src = this.getAttribute('src').startsWith('/portfolio/public') ? this.getAttribute('src').replace('/portfolio/public', '') : ('/portfolio/public' + (this.getAttribute('src').startsWith('/') ? '' : '/') + this.getAttribute('src')); } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
             />
@@ -1694,6 +1736,7 @@
             <img
               src="${item.image}"
               alt="${item.title}"
+              loading="lazy"
               class="w-full h-full object-cover rounded-none"
               onerror="if(!this.dataset.tried){ this.dataset.tried='1'; this.src = this.getAttribute('src').startsWith('/portfolio/public') ? this.getAttribute('src').replace('/portfolio/public', '') : ('/portfolio/public' + (this.getAttribute('src').startsWith('/') ? '' : '/') + this.getAttribute('src')); } else { this.classList.add('hidden'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }"
             />
@@ -1783,11 +1826,11 @@
       document.addEventListener('touchstart', setupAllVideos, { once: true });
       document.addEventListener('click', setupAllVideos, { once: true });
 
-      // 7. Subtle Viewport Fade-In Intersection Observer for Landing Page Sections
+      // 7. Lightweight Viewport Scroll-Reveal Observer for Sections, Images & Large Text Blocks
       const initFadeInObserver = () => {
-        const sections = document.querySelectorAll('.fade-in-section');
+        const targets = document.querySelectorAll('.fade-in-section, .reveal-on-scroll');
         if (!('IntersectionObserver' in window)) {
-          sections.forEach((s) => s.classList.add('is-visible'));
+          targets.forEach((el) => el.classList.add('is-visible'));
           return;
         }
 
@@ -1802,12 +1845,12 @@
           },
           {
             root: null,
-            rootMargin: '0px 0px -40px 0px',
-            threshold: 0.08
+            rootMargin: '0px 0px -30px 0px',
+            threshold: 0.06
           }
         );
 
-        sections.forEach((section) => observer.observe(section));
+        targets.forEach((el) => observer.observe(el));
       };
 
       if (document.readyState === 'loading') {
